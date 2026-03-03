@@ -15,7 +15,7 @@
     
     --image: var(--soft);
     
-    --background: #f5f5f5;
+    --background: #ffd6ba;
     --text: #222222;
     
     --light: var(--background);
@@ -26,9 +26,9 @@
 body, html {
     margin: 0;
     padding: 10px;
-    background: var(--background);
+    background: #ffd6ba;
     color: var(--text);
-    font-family: var(--font);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 img {
@@ -73,4 +73,21 @@ button {
     cursor: pointer;
     font-family: var(--font);
     width: 160px;
+}
+.profile-picture{
+  width: 180px;       /* Set a specific width */
+  height: 180px;      /* Set an equal height for a perfect circle */
+  object-fit: cover;  /* Ensures the image covers the area without distortion */
+  border-radius: 50%; /*Crops the image into a circle */
+  border: 3px solid #fff; /* Optional: Add a border */
+  box-shadow: 0 10px 8px rgba(18, 17, 17, 0.2); /* Optional: Add a subtle shadow */
+  object-position: 40% 40%; /* Center the image within the circle */
+}
+.card{
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 20px; /* Optional: Add some padding around the card */
+    margin-bottom: 20px; /* Optional: Add some space below the card */
 }
