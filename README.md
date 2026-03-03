@@ -1,1 +1,1 @@
-Static Page
+Static Page : https://velan45.github.io/velan.github.io/
