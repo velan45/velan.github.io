@@ -35,6 +35,49 @@
     "footballBadge": true,
     "cleanCodeBadge": true
   },
+  "aboutHighlights": [
+    {
+      "id": "hl_delivery",
+      "title": "End-to-End Delivery",
+      "desc": "Concept design, frontend UI, backend logic, and production deployment."
+    },
+    {
+      "id": "hl_fluency",
+      "title": "Low-Level & High-Level Fluency",
+      "desc": "Comfortable across C++ socket programming, Python automation, and modern JavaScript."
+    },
+    {
+      "id": "hl_collab",
+      "title": "Collaborative & Agile",
+      "desc": "Experienced working independently as a freelancer and alongside cross-functional teams."
+    }
+  ],
+  "aboutStats": [
+    {
+      "id": "stat_fullstack",
+      "number": "Full-Stack",
+      "label": "Web & Backend Engineering",
+      "sub": "From responsive UIs to API design"
+    },
+    {
+      "id": "stat_polyglot",
+      "number": "Polyglot",
+      "label": "JavaScript, Python, C++",
+      "sub": "Versatility across modern tech stacks"
+    },
+    {
+      "id": "stat_quality",
+      "number": "100%",
+      "label": "Commitment to Quality",
+      "sub": "Clean architecture & testable code"
+    },
+    {
+      "id": "stat_remote",
+      "number": "Remote",
+      "label": "Global Collaboration",
+      "sub": "Available worldwide across timezones"
+    }
+  ],
   "projects": [
     {
       "id": "dreamcatcher",
@@ -141,6 +184,7 @@
   ],
   "skills": [
     {
+      "id": "cat_frontend",
       "category": "Frontend Development",
       "description": "Creating fast, accessible, responsive, and delightful user interfaces.",
       "visible": true,
@@ -155,6 +199,7 @@
       ]
     },
     {
+      "id": "cat_backend",
       "category": "Backend & Systems",
       "description": "Architecting dependable logic, networking layers, and data flows.",
       "visible": true,
@@ -169,6 +214,7 @@
       ]
     },
     {
+      "id": "cat_tools",
       "category": "Tools, AI & DevOps",
       "description": "Automation workflows, version control, and intelligent integrations.",
       "visible": true,

@@ -1,6 +1,6 @@
 /**
  * Velan D - Professional Portfolio
- * Client-Side JavaScript with Owner Mode & Dynamic Visibility Management
+ * Client-Side JavaScript with Owner Mode & Comprehensive Content Editing
  */
 
 // ------------------------------------------------------------------
@@ -43,6 +43,96 @@ const DEFAULT_DATA = {
     footballBadge: true,
     cleanCodeBadge: true
   },
+  aboutHighlights: [
+    {
+      id: "hl_delivery",
+      title: "End-to-End Delivery",
+      desc: "Concept design, frontend UI, backend logic, and production deployment."
+    },
+    {
+      id: "hl_fluency",
+      title: "Low-Level & High-Level Fluency",
+      desc: "Comfortable across C++ socket programming, Python automation, and modern JavaScript."
+    },
+    {
+      id: "hl_collab",
+      title: "Collaborative & Agile",
+      desc: "Experienced working independently as a freelancer and alongside cross-functional teams."
+    }
+  ],
+  aboutStats: [
+    {
+      id: "stat_fullstack",
+      number: "Full-Stack",
+      label: "Web & Backend Engineering",
+      sub: "From responsive UIs to API design"
+    },
+    {
+      id: "stat_polyglot",
+      number: "Polyglot",
+      label: "JavaScript, Python, C++",
+      sub: "Versatility across modern tech stacks"
+    },
+    {
+      id: "stat_quality",
+      number: "100%",
+      label: "Commitment to Quality",
+      sub: "Clean architecture & testable code"
+    },
+    {
+      id: "stat_remote",
+      number: "Remote",
+      label: "Global Collaboration",
+      sub: "Available worldwide across timezones"
+    }
+  ],
+  skills: [
+    {
+      id: "cat_frontend",
+      category: "Frontend Development",
+      description: "Creating fast, accessible, responsive, and delightful user interfaces.",
+      visible: true,
+      items: [
+        "JavaScript (ES6+)",
+        "HTML5 & Semantic Web",
+        "Modern CSS3 / Flexbox / Grid",
+        "Responsive Design",
+        "DOM & Web APIs",
+        "Vite & Build Tools",
+        "UI / UX Prototyping"
+      ]
+    },
+    {
+      id: "cat_backend",
+      category: "Backend & Systems",
+      description: "Architecting dependable logic, networking layers, and data flows.",
+      visible: true,
+      items: [
+        "Python Development",
+        "C++ Systems Programming",
+        "Node.js Runtime",
+        "Linux Socket Programming",
+        "RESTful API Integration",
+        "Networking Protocols (TCP/IP, ICMP)",
+        "System Health & Monitoring"
+      ]
+    },
+    {
+      id: "cat_tools",
+      category: "Tools, AI & DevOps",
+      description: "Automation workflows, version control, and intelligent integrations.",
+      visible: true,
+      items: [
+        "Git & GitHub Workflow",
+        "Linux Shell & Bash",
+        "LLM & AI Prompt Pipelines",
+        "Resume / Document AI Parsers",
+        "GitHub Pages Hosting",
+        "Debugging & Performance Profiling",
+        "Visual Studio Code"
+      ]
+    }
+  ],
   projects: [
     {
       id: "dreamcatcher",
@@ -146,6 +236,41 @@ const DEFAULT_DATA = {
       ],
       technologies: ["C++", "Linux POSIX", "TCP/IP", "Server Architecture"]
     }
+  ],
+  services: [
+    {
+      id: "service_web",
+      title: "Full-Stack Web Development",
+      desc: "Building intuitive, mobile-first web applications and interactive landing pages with performant frontends and clean server-side integrations.",
+      visible: true,
+      bullets: [
+        "Modern responsive design & accessible UI",
+        "High lighthouse performance & SEO",
+        "Single-page apps & dynamic dashboards"
+      ]
+    },
+    {
+      id: "service_backend",
+      title: "Backend & Network Utilities",
+      desc: "Developing robust backend services, socket-based network diagnostics, automated health monitors, and system utilities in Python and C++.",
+      visible: true,
+      bullets: [
+        "RESTful APIs & data pipelines",
+        "Low-latency socket programming & pinging",
+        "Server uptime monitoring & alerts"
+      ]
+    },
+    {
+      id: "service_ai",
+      title: "AI Integration & Automation",
+      desc: "Leveraging modern AI, prompt harnesses, and script automation to optimize workflows, match resumes, analyze sentiment, and eliminate manual tasks.",
+      visible: true,
+      bullets: [
+        "LLM integration & resume analyzers",
+        "Workflow automation scripts in Python",
+        "Data extraction & content generation"
+      ]
+    }
   ]
 };
 
@@ -165,13 +290,10 @@ async function sha256(message) {
 // DOM Ready Event Initialization
 // ------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', async () => {
-  // Check session authentication status
   isOwnerAuthenticated = sessionStorage.getItem('vd_owner_authenticated') === 'true';
 
-  // Load configuration from local storage or json
   await loadPortfolioData();
 
-  // Initialize UI features
   initTheme();
   initTypewriter();
   initNavbarScroll();
@@ -180,8 +302,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   initContactForm();
   initModals();
   initOwnerMode();
+  initQuickSectionEditButtons();
 
-  // Render content according to data & visibility
   renderPortfolio();
 });
 
@@ -193,6 +315,11 @@ async function loadPortfolioData() {
   if (localSaved) {
     try {
       appData = JSON.parse(localSaved);
+      // Ensure all arrays exist even if old version was in storage
+      if (!appData.aboutHighlights) appData.aboutHighlights = JSON.parse(JSON.stringify(DEFAULT_DATA.aboutHighlights));
+      if (!appData.aboutStats) appData.aboutStats = JSON.parse(JSON.stringify(DEFAULT_DATA.aboutStats));
+      if (!appData.skills) appData.skills = JSON.parse(JSON.stringify(DEFAULT_DATA.skills));
+      if (!appData.services) appData.services = JSON.parse(JSON.stringify(DEFAULT_DATA.services));
       return;
     } catch (e) {
       console.warn('Could not parse local portfolio data, falling back.');
@@ -206,7 +333,6 @@ async function loadPortfolioData() {
       appData = fetched;
     }
   } catch (err) {
-    // Graceful fallback to default data when offline or loading local file
     console.info('Using built-in portfolio data fallback.');
     appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
   }
@@ -220,9 +346,9 @@ function savePortfolioDataLocally() {
 // Main Render Function: Updates Content & Visibility in DOM
 // ------------------------------------------------------------------
 function renderPortfolio() {
-  const { profile, visibility, projects } = appData;
+  const { profile, visibility, aboutHighlights, aboutStats, skills, projects, services } = appData;
 
-  // 1. Profile information
+  // 1. Profile & Hero information
   const heroName = document.getElementById('heroName');
   if (heroName) heroName.textContent = profile.name || 'Velan D';
 
@@ -239,11 +365,7 @@ function renderPortfolio() {
   const heroStatusText = document.getElementById('heroStatusText');
   if (heroStatusBadge && heroStatusText) {
     heroStatusText.textContent = profile.statusBadge || 'Available for Freelance & New Opportunities';
-    if (!profile.statusAvailable) {
-      heroStatusBadge.style.opacity = '0.6';
-    } else {
-      heroStatusBadge.style.opacity = '1';
-    }
+    heroStatusBadge.style.opacity = profile.statusAvailable ? '1' : '0.6';
   }
 
   // About bio text
@@ -255,6 +377,10 @@ function renderPortfolio() {
 
   const aboutBioPersonal = document.getElementById('aboutBioPersonal');
   if (aboutBioPersonal && profile.bioPersonal) aboutBioPersonal.textContent = profile.bioPersonal;
+
+  // Render About Highlights & Stats
+  renderAboutHighlights(aboutHighlights || DEFAULT_DATA.aboutHighlights);
+  renderAboutStats(aboutStats || DEFAULT_DATA.aboutStats);
 
   // Contact details
   const emailText = document.getElementById('emailText');
@@ -273,10 +399,12 @@ function renderPortfolio() {
   const badgeCleanCode = document.getElementById('badgeCleanCode');
   if (badgeCleanCode) badgeCleanCode.style.display = visibility.cleanCodeBadge ? 'flex' : 'none';
 
-  // 3. Projects Grid Rendering
-  renderProjectsGrid(projects);
+  // 3. Render Dynamic Grids (Skills, Projects, Services)
+  renderSkillsGrid(skills || DEFAULT_DATA.skills);
+  renderProjectsGrid(projects || DEFAULT_DATA.projects);
+  renderServicesGrid(services || DEFAULT_DATA.services);
 
-  // 4. Update Owner Bar state if active
+  // 4. Update Owner Bar state
   updateOwnerBarState();
 }
 
@@ -290,13 +418,90 @@ function toggleSectionDisplay(sectionId, isVisible) {
     el.style.display = '';
   }
 
-  // Update corresponding nav links
   const navLinks = document.querySelectorAll(`a[href="#${sectionId}"]`);
   navLinks.forEach((link) => {
     link.style.display = isVisible === false && !isOwnerAuthenticated ? 'none' : '';
   });
 }
 
+// ------------------------------------------------------------------
+// Section Rendering: About Highlights & Stats
+// ------------------------------------------------------------------
+function renderAboutHighlights(highlights) {
+  const container = document.getElementById('aboutHighlightsList');
+  if (!container) return;
+
+  container.innerHTML = highlights.map((hl) => `
+    <div class="highlight-item">
+      <div class="highlight-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <strong>${escapeHtml(hl.title)}:</strong> ${escapeHtml(hl.desc)}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAboutStats(stats) {
+  const container = document.getElementById('aboutStatsCards');
+  if (!container) return;
+
+  container.innerHTML = stats.map((stat) => `
+    <div class="stat-card">
+      <div class="stat-number">${escapeHtml(stat.number)}</div>
+      <div class="stat-label">${escapeHtml(stat.label)}</div>
+      <p class="stat-sub">${escapeHtml(stat.sub || '')}</p>
+    </div>
+  `).join('');
+}
+
+// ------------------------------------------------------------------
+// Section Rendering: Skills Grid
+// ------------------------------------------------------------------
+function renderSkillsGrid(skills) {
+  const grid = document.getElementById('skillsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  const categoryIcons = [
+    `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 5a2 2 0 0 1-2 2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a2 2 0 0 1 2 2c0 2-2 3-2 5a4 4 0 0 0 8 0c0-2-2-3-2-5a2 2 0 0 1 2-2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4a2 2 0 0 1-2-2c0-2 2-3 2-5a4 4 0 0 0-4-4z"></path></svg>`
+  ];
+
+  skills.forEach((cat, index) => {
+    const isHiddenFromPublic = cat.visible === false;
+    if (isHiddenFromPublic && !isOwnerAuthenticated) return;
+
+    const icon = categoryIcons[index % categoryIcons.length];
+    const card = document.createElement('div');
+    card.className = `skill-category-card ${isHiddenFromPublic ? 'is-hidden-preview' : ''}`;
+
+    const hiddenBadgeHtml = isHiddenFromPublic
+      ? `<div class="project-hidden-badge" style="top:12px; right:12px;">Hidden Category</div>`
+      : '';
+
+    card.innerHTML = `
+      ${hiddenBadgeHtml}
+      <div class="category-header">
+        <div class="category-icon">${icon}</div>
+        <h3 class="category-title">${escapeHtml(cat.category)}</h3>
+      </div>
+      <p class="category-description">${escapeHtml(cat.description || '')}</p>
+      <div class="skill-pills">
+        ${(cat.items || []).map((skill) => `<span class="skill-pill">${escapeHtml(skill)}</span>`).join('')}
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+// ------------------------------------------------------------------
+// Section Rendering: Projects Grid
+// ------------------------------------------------------------------
 function renderProjectsGrid(projects) {
   const grid = document.getElementById('projectsGrid');
   if (!grid) return;
@@ -308,13 +513,8 @@ function renderProjectsGrid(projects) {
 
   projects.forEach((proj) => {
     const isHiddenFromPublic = proj.visible === false;
+    if (isHiddenFromPublic && !isOwnerAuthenticated) return;
 
-    // Normal visitors do NOT see hidden projects at all
-    if (isHiddenFromPublic && !isOwnerAuthenticated) {
-      return;
-    }
-
-    // Filter check
     const matchesCategory = currentFilter === 'all' || proj.category === currentFilter;
     const displayStyle = matchesCategory ? 'flex' : 'none';
 
@@ -325,10 +525,7 @@ function renderProjectsGrid(projects) {
     card.style.display = displayStyle;
 
     const hiddenBadgeHtml = isHiddenFromPublic
-      ? `<div class="project-hidden-badge" title="Hidden from public visitors. Visible only in Owner Mode.">
-           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-           Hidden from Public
-         </div>`
+      ? `<div class="project-hidden-badge">Hidden from Public</div>`
       : '';
 
     card.innerHTML = `
@@ -363,12 +560,52 @@ function renderProjectsGrid(projects) {
     grid.appendChild(card);
   });
 
-  // Re-bind detail modal triggers
   grid.querySelectorAll('.open-details-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-project-id');
       openProjectModal(id);
     });
+  });
+}
+
+// ------------------------------------------------------------------
+// Section Rendering: Services Grid
+// ------------------------------------------------------------------
+function renderServicesGrid(services) {
+  const grid = document.getElementById('servicesGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  const serviceIcons = [
+    `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"></path><path d="m4.93 4.93 2.83 2.83"></path><path d="M2 12h4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="M12 18v4"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M18 12h4"></path><path d="m16.24 7.76 2.83-2.83"></path></svg>`
+  ];
+
+  services.forEach((service, index) => {
+    const isHiddenFromPublic = service.visible === false;
+    if (isHiddenFromPublic && !isOwnerAuthenticated) return;
+
+    const icon = serviceIcons[index % serviceIcons.length];
+    const card = document.createElement('div');
+    card.className = `service-card ${isHiddenFromPublic ? 'is-hidden-preview' : ''}`;
+
+    const hiddenBadgeHtml = isHiddenFromPublic
+      ? `<div class="project-hidden-badge" style="top:12px; right:12px;">Hidden Service</div>`
+      : '';
+
+    card.innerHTML = `
+      ${hiddenBadgeHtml}
+      <div class="service-icon-box">${icon}</div>
+      <h3 class="service-title">${escapeHtml(service.title)}</h3>
+      <p class="service-desc">${escapeHtml(service.desc)}</p>
+      <ul class="service-bullets">
+        ${(service.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('')}
+      </ul>
+    `;
+
+    grid.appendChild(card);
   });
 }
 
@@ -383,6 +620,24 @@ function escapeHtml(str) {
 }
 
 // ------------------------------------------------------------------
+// In-Page Quick Section Edit Buttons
+// ------------------------------------------------------------------
+function initQuickSectionEditButtons() {
+  document.querySelectorAll('.section-edit-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetTab = btn.getAttribute('data-edit-tab');
+      if (isOwnerAuthenticated) {
+        openOwnerDashboard();
+        if (targetTab) switchDashboardTab(targetTab);
+      } else {
+        openModalEl(document.getElementById('ownerLoginModal'));
+      }
+    });
+  });
+}
+
+// ------------------------------------------------------------------
 // Owner Mode & Authentication
 // ------------------------------------------------------------------
 function initOwnerMode() {
@@ -394,7 +649,6 @@ function initOwnerMode() {
   const ownerPasskeyInput = document.getElementById('ownerPasskeyInput');
   const ownerPasskeyError = document.getElementById('ownerPasskeyError');
 
-  // Trigger Login Modal
   if (openOwnerLoginBtn) {
     openOwnerLoginBtn.addEventListener('click', () => {
       if (isOwnerAuthenticated) {
@@ -410,7 +664,7 @@ function initOwnerMode() {
     });
   }
 
-  // Keyboard Shortcut: Ctrl + Shift + A or Cmd + Shift + A
+  // Shortcut Ctrl + Shift + A
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
       e.preventDefault();
@@ -429,14 +683,12 @@ function initOwnerMode() {
   if (ownerLoginCloseBtn) ownerLoginCloseBtn.addEventListener('click', () => closeModalEl(ownerLoginModal));
   if (ownerLoginBackdrop) ownerLoginBackdrop.addEventListener('click', () => closeModalEl(ownerLoginModal));
 
-  // Handle Passkey Submission
   if (ownerLoginForm) {
     ownerLoginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const enteredKey = ownerPasskeyInput.value.trim();
       const enteredHash = await sha256(enteredKey);
 
-      // Check stored custom hash or file hash
       const targetHash = localStorage.getItem('vd_custom_passkey_hash') || (appData.auth && appData.auth.passwordHash);
 
       if (enteredHash === targetHash || enteredKey === 'velan-admin-2026') {
@@ -454,7 +706,7 @@ function initOwnerMode() {
     });
   }
 
-  // Owner Bar Buttons
+  // Owner Bar actions
   const openDashboardBtn = document.getElementById('openDashboardBtn');
   if (openDashboardBtn) openDashboardBtn.addEventListener('click', openOwnerDashboard);
 
@@ -479,7 +731,6 @@ function initOwnerMode() {
     });
   }
 
-  // Init Dashboard Modals & Tabs
   initDashboardControls();
 }
 
@@ -497,7 +748,7 @@ function updateOwnerBarState() {
 }
 
 // ------------------------------------------------------------------
-// Owner Dashboard Dialog & Tabs
+// Owner Dashboard Dialog & Comprehensive Content Management
 // ------------------------------------------------------------------
 function initDashboardControls() {
   const dashboardModal = document.getElementById('ownerDashboardModal');
@@ -507,7 +758,7 @@ function initDashboardControls() {
   if (closeBtn) closeBtn.addEventListener('click', () => closeModalEl(dashboardModal));
   if (backdrop) backdrop.addEventListener('click', () => closeModalEl(dashboardModal));
 
-  // Tabs switching
+  // Tab switching
   const tabs = document.querySelectorAll('.dash-tab');
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -516,11 +767,12 @@ function initDashboardControls() {
     });
   });
 
-  // Profile Form Save
+  // Profile & About Form Save
   const profileForm = document.getElementById('profileEditForm');
   if (profileForm) {
     profileForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      // Profile Header fields
       appData.profile.name = document.getElementById('profNameInput').value.trim();
       appData.profile.role = document.getElementById('profRoleInput').value.trim();
       appData.profile.description = document.getElementById('profDescInput').value.trim();
@@ -528,17 +780,36 @@ function initDashboardControls() {
       appData.profile.location = document.getElementById('profLocationInput').value.trim();
       appData.profile.github = document.getElementById('profGithubInput').value.trim();
       appData.profile.linkedin = document.getElementById('profLinkedinInput').value.trim();
+
+      // Bio text fields
       appData.profile.bioLead = document.getElementById('profBioLeadInput').value.trim();
       appData.profile.bioStory = document.getElementById('profBioStoryInput').value.trim();
       appData.profile.bioPersonal = document.getElementById('profBioPersonalInput').value.trim();
 
+      // Save About Highlights
+      const highlightRows = document.querySelectorAll('.dash-highlight-row');
+      appData.aboutHighlights = Array.from(highlightRows).map((row) => ({
+        id: row.getAttribute('data-hl-id'),
+        title: row.querySelector('.dash-hl-title').value.trim(),
+        desc: row.querySelector('.dash-hl-desc').value.trim()
+      }));
+
+      // Save About Stats
+      const statRows = document.querySelectorAll('.dash-stat-row');
+      appData.aboutStats = Array.from(statRows).map((row) => ({
+        id: row.getAttribute('data-stat-id'),
+        number: row.querySelector('.dash-stat-number').value.trim(),
+        label: row.querySelector('.dash-stat-label').value.trim(),
+        sub: row.querySelector('.dash-stat-sub').value.trim()
+      }));
+
       savePortfolioDataLocally();
       renderPortfolio();
-      showToast('Profile information saved locally!');
+      showToast('About Me & Profile details saved!');
     });
   }
 
-  // Status toggle & badge text
+  // Status Availability
   const statusAvailableToggle = document.getElementById('statusAvailableToggle');
   const statusBadgeTextInput = document.getElementById('statusBadgeTextInput');
 
@@ -558,11 +829,13 @@ function initDashboardControls() {
     });
   }
 
+  // Initialize Entity Modals
+  initProjectEditor();
+  initSkillCategoryEditor();
+  initServiceEditor();
+
   // GitHub Sync & Commit
   initGitHubSync();
-
-  // Project Editor Modal Controls
-  initProjectEditor();
 
   // Reset defaults
   const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
@@ -616,10 +889,13 @@ function openOwnerDashboard() {
   openModalEl(modal);
 }
 
+// ------------------------------------------------------------------
+// Populate Dashboard Form Fields (All 6 Tabs)
+// ------------------------------------------------------------------
 function populateDashboardFields() {
-  const { profile, visibility, projects } = appData;
+  const { profile, visibility, aboutHighlights, aboutStats, skills, projects, services } = appData;
 
-  // 1. Populate Section Visibility
+  // 1. Tab 1: Section Visibility
   const sectionList = document.getElementById('sectionVisibilityList');
   if (sectionList) {
     const sections = [
@@ -655,14 +931,14 @@ function populateDashboardFields() {
     });
   }
 
-  // 2. Populate Availability
+  // Availability
   const statusAvailableToggle = document.getElementById('statusAvailableToggle');
   if (statusAvailableToggle) statusAvailableToggle.checked = !!profile.statusAvailable;
 
   const statusBadgeTextInput = document.getElementById('statusBadgeTextInput');
   if (statusBadgeTextInput) statusBadgeTextInput.value = profile.statusBadge || '';
 
-  // 3. Populate Project Visibility Checklist (Show/Hide)
+  // Project Visibility Checklist in Tab 1
   const projChecklist = document.getElementById('projectVisibilityChecklist');
   if (projChecklist) {
     projChecklist.innerHTML = projects.map((p) => `
@@ -686,75 +962,14 @@ function populateDashboardFields() {
           proj.visible = input.checked;
           savePortfolioDataLocally();
           renderPortfolio();
-          populateDashboardFields(); // Refresh labels
+          populateDashboardFields();
           showToast(`Project "${proj.title}" is now ${proj.visible ? 'VISIBLE' : 'HIDDEN'} to public visitors.`);
         }
       });
     });
   }
 
-  // 4. Populate Project Management List (Add/Edit/Delete)
-  const projList = document.getElementById('dashProjectsList');
-  if (projList) {
-    projList.innerHTML = projects.map((p) => `
-      <div class="dash-project-item">
-        <div class="dash-project-info">
-          <div class="dash-project-name">
-            <span>${escapeHtml(p.title)}</span>
-            ${p.visible === false ? '<span style="font-size:0.75rem; color:#fbbf24;">[Hidden]</span>' : ''}
-          </div>
-          <span class="dash-project-cat">${escapeHtml(p.badge || p.category)}</span>
-        </div>
-        <div class="dash-project-actions">
-          <label class="toggle-switch" title="Toggle Visibility">
-            <input type="checkbox" data-proj-toggle-id="${p.id}" ${p.visible !== false ? 'checked' : ''} />
-            <span class="toggle-slider"></span>
-          </label>
-          <button class="btn btn-secondary btn-sm edit-proj-btn" data-proj-id="${p.id}" type="button">Edit</button>
-          <button class="btn btn-secondary btn-sm delete-proj-btn" data-proj-id="${p.id}" type="button" style="color:#ef4444;">Delete</button>
-        </div>
-      </div>
-    `).join('');
-
-    // Project toggle
-    projList.querySelectorAll('input[data-proj-toggle-id]').forEach((input) => {
-      input.addEventListener('change', () => {
-        const id = input.getAttribute('data-proj-toggle-id');
-        const proj = appData.projects.find((p) => p.id === id);
-        if (proj) {
-          proj.visible = input.checked;
-          savePortfolioDataLocally();
-          renderPortfolio();
-          populateDashboardFields();
-        }
-      });
-    });
-
-    // Project edit
-    projList.querySelectorAll('.edit-proj-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-proj-id');
-        openProjectEditor(id);
-      });
-    });
-
-    // Project delete
-    projList.querySelectorAll('.delete-proj-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-proj-id');
-        const proj = appData.projects.find((p) => p.id === id);
-        if (proj && confirm(`Delete project "${proj.title}" permanently?`)) {
-          appData.projects = appData.projects.filter((p) => p.id !== id);
-          savePortfolioDataLocally();
-          renderPortfolio();
-          populateDashboardFields();
-          showToast(`Deleted "${proj.title}".`);
-        }
-      });
-    });
-  }
-
-  // 5. Populate Profile Form
+  // 2. Tab 2: Profile & About Me
   const setVal = (id, val) => {
     const el = document.getElementById(id);
     if (el) el.value = val || '';
@@ -771,7 +986,39 @@ function populateDashboardFields() {
   setVal('profBioStoryInput', profile.bioStory);
   setVal('profBioPersonalInput', profile.bioPersonal);
 
-  // 6. Token prefill
+  // About Highlights in Tab 2
+  const dashHighlightsList = document.getElementById('dashAboutHighlightsList');
+  if (dashHighlightsList) {
+    dashHighlightsList.innerHTML = (aboutHighlights || DEFAULT_DATA.aboutHighlights).map((hl) => `
+      <div class="dash-highlight-row" data-hl-id="${hl.id}" style="display:grid; grid-template-columns: 1fr 2fr; gap:0.75rem; margin-bottom:0.75rem;">
+        <input type="text" class="form-input dash-hl-title" value="${escapeHtml(hl.title)}" placeholder="Highlight Title" />
+        <input type="text" class="form-input dash-hl-desc" value="${escapeHtml(hl.desc)}" placeholder="Highlight Description" />
+      </div>
+    `).join('');
+  }
+
+  // About Stats in Tab 2
+  const dashStatsList = document.getElementById('dashAboutStatsList');
+  if (dashStatsList) {
+    dashStatsList.innerHTML = (aboutStats || DEFAULT_DATA.aboutStats).map((stat) => `
+      <div class="dash-stat-row" data-stat-id="${stat.id}" style="display:grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap:0.75rem; margin-bottom:0.75rem;">
+        <input type="text" class="form-input dash-stat-number" value="${escapeHtml(stat.number)}" placeholder="e.g. 5+ Years" />
+        <input type="text" class="form-input dash-stat-label" value="${escapeHtml(stat.label)}" placeholder="e.g. Full-Stack Dev" />
+        <input type="text" class="form-input dash-stat-sub" value="${escapeHtml(stat.sub || '')}" placeholder="Subtitle" />
+      </div>
+    `).join('');
+  }
+
+  // 3. Tab 3: Skills Management List
+  populateSkillsTab();
+
+  // 4. Tab 4: Projects Management List
+  populateProjectsTab();
+
+  // 5. Tab 5: Services Management List
+  populateServicesTab();
+
+  // 6. Tab 6: Tokens
   const ghTokenInput = document.getElementById('ghTokenInput');
   if (ghTokenInput) {
     ghTokenInput.value = localStorage.getItem('vd_github_pat') || '';
@@ -779,8 +1026,261 @@ function populateDashboardFields() {
 }
 
 // ------------------------------------------------------------------
-// Project Editor Modal (Add / Edit)
+// Skills Management Tab
 // ------------------------------------------------------------------
+function populateSkillsTab() {
+  const container = document.getElementById('dashSkillsList');
+  if (!container) return;
+
+  container.innerHTML = appData.skills.map((cat) => `
+    <div class="dash-card-item" data-cat-id="${cat.id}">
+      <div class="dash-card-header">
+        <div>
+          <span class="dash-card-title">${escapeHtml(cat.category)}</span>
+          ${cat.visible === false ? '<span style="font-size:0.75rem; color:#fbbf24; margin-left:0.5rem;">[Hidden from Public]</span>' : ''}
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <label class="toggle-switch" title="Toggle Category Visibility">
+            <input type="checkbox" class="toggle-cat-vis" data-cat-id="${cat.id}" ${cat.visible !== false ? 'checked' : ''} />
+            <span class="toggle-slider"></span>
+          </label>
+          <button class="btn btn-secondary btn-sm edit-cat-btn" data-cat-id="${cat.id}" type="button">Edit</button>
+          <button class="btn btn-secondary btn-sm delete-cat-btn" data-cat-id="${cat.id}" type="button" style="color:#ef4444;">Delete</button>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-secondary);">${escapeHtml(cat.description || '')}</p>
+      
+      <div class="dash-tag-list" id="tagList_${cat.id}">
+        ${(cat.items || []).map((skill, sIdx) => `
+          <span class="dash-editable-tag">
+            <span>${escapeHtml(skill)}</span>
+            <button class="dash-tag-remove-btn" data-cat-id="${cat.id}" data-skill-idx="${sIdx}" type="button" title="Remove this skill">×</button>
+          </span>
+        `).join('')}
+      </div>
+
+      <div class="dash-add-tag-box">
+        <input type="text" class="form-input new-skill-input" placeholder="Type new skill & press Add (e.g. TypeScript)..." style="padding:0.4rem 0.8rem; font-size:0.85rem;" />
+        <button class="btn btn-primary btn-sm add-skill-btn" data-cat-id="${cat.id}" type="button">Add</button>
+      </div>
+    </div>
+  `).join('');
+
+  // Toggle category visibility
+  container.querySelectorAll('.toggle-cat-vis').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+      const id = toggle.getAttribute('data-cat-id');
+      const cat = appData.skills.find((c) => c.id === id);
+      if (cat) {
+        cat.visible = toggle.checked;
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateSkillsTab();
+      }
+    });
+  });
+
+  // Edit category modal trigger
+  container.querySelectorAll('.edit-cat-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-cat-id');
+      openSkillCategoryEditor(id);
+    });
+  });
+
+  // Delete category
+  container.querySelectorAll('.delete-cat-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-cat-id');
+      const cat = appData.skills.find((c) => c.id === id);
+      if (cat && confirm(`Delete category "${cat.category}"?`)) {
+        appData.skills = appData.skills.filter((c) => c.id !== id);
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateSkillsTab();
+        showToast(`Deleted category "${cat.category}".`);
+      }
+    });
+  });
+
+  // Remove individual skill chip
+  container.querySelectorAll('.dash-tag-remove-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const catId = btn.getAttribute('data-cat-id');
+      const sIdx = parseInt(btn.getAttribute('data-skill-idx'), 10);
+      const cat = appData.skills.find((c) => c.id === catId);
+      if (cat && cat.items[sIdx]) {
+        const removed = cat.items.splice(sIdx, 1);
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateSkillsTab();
+        showToast(`Removed "${removed[0]}".`);
+      }
+    });
+  });
+
+  // Add individual skill chip
+  container.querySelectorAll('.add-skill-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const catId = btn.getAttribute('data-cat-id');
+      const parent = btn.closest('.dash-card-item');
+      const input = parent.querySelector('.new-skill-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const cat = appData.skills.find((c) => c.id === catId);
+      if (cat) {
+        if (!cat.items) cat.items = [];
+        cat.items.push(val);
+        input.value = '';
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateSkillsTab();
+        showToast(`Added "${val}" to ${cat.category}!`);
+      }
+    });
+  });
+}
+
+function initSkillCategoryEditor() {
+  const modal = document.getElementById('skillCategoryModal');
+  const closeBtn = document.getElementById('skillCategoryCloseBtn');
+  const backdrop = document.getElementById('skillCategoryBackdrop');
+  const addBtn = document.getElementById('addNewSkillCategoryBtn');
+  const form = document.getElementById('skillCategoryForm');
+
+  if (closeBtn) closeBtn.addEventListener('click', () => closeModalEl(modal));
+  if (backdrop) backdrop.addEventListener('click', () => closeModalEl(modal));
+
+  if (addBtn) {
+    addBtn.addEventListener('click', () => openSkillCategoryEditor(null));
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const catId = document.getElementById('editSkillCatId').value;
+      const title = document.getElementById('editSkillCatTitle').value.trim();
+      const desc = document.getElementById('editSkillCatDesc').value.trim();
+      const itemsStr = document.getElementById('editSkillCatItems').value.trim();
+      const visible = document.getElementById('editSkillCatVisible').checked;
+
+      const items = itemsStr ? itemsStr.split(',').map((s) => s.trim()).filter(Boolean) : [];
+
+      if (catId) {
+        const cat = appData.skills.find((c) => c.id === catId);
+        if (cat) {
+          cat.category = title;
+          cat.description = desc;
+          cat.items = items;
+          cat.visible = visible;
+        }
+      } else {
+        appData.skills.push({
+          id: 'cat_' + Date.now(),
+          category: title,
+          description: desc,
+          items: items,
+          visible: visible
+        });
+      }
+
+      savePortfolioDataLocally();
+      renderPortfolio();
+      populateSkillsTab();
+      closeModalEl(modal);
+      showToast(`Saved category "${title}"!`);
+    });
+  }
+}
+
+function openSkillCategoryEditor(catId) {
+  const modal = document.getElementById('skillCategoryModal');
+  const heading = document.getElementById('skillCategoryHeading');
+  const form = document.getElementById('skillCategoryForm');
+
+  if (form) form.reset();
+
+  if (catId) {
+    const cat = appData.skills.find((c) => c.id === catId);
+    if (!cat) return;
+    if (heading) heading.textContent = `Edit Category: ${cat.category}`;
+    document.getElementById('editSkillCatId').value = cat.id;
+    document.getElementById('editSkillCatTitle').value = cat.category || '';
+    document.getElementById('editSkillCatDesc').value = cat.description || '';
+    document.getElementById('editSkillCatItems').value = (cat.items || []).join(', ');
+    document.getElementById('editSkillCatVisible').checked = cat.visible !== false;
+  } else {
+    if (heading) heading.textContent = 'Add New Skill Category';
+    document.getElementById('editSkillCatId').value = '';
+    document.getElementById('editSkillCatVisible').checked = true;
+  }
+
+  openModalEl(modal);
+}
+
+// ------------------------------------------------------------------
+// Projects Management Tab
+// ------------------------------------------------------------------
+function populateProjectsTab() {
+  const projList = document.getElementById('dashProjectsList');
+  if (!projList) return;
+
+  projList.innerHTML = appData.projects.map((p) => `
+    <div class="dash-project-item">
+      <div class="dash-project-info">
+        <div class="dash-project-name">
+          <span>${escapeHtml(p.title)}</span>
+          ${p.visible === false ? '<span style="font-size:0.75rem; color:#fbbf24;">[Hidden from Public]</span>' : ''}
+        </div>
+        <span class="dash-project-cat">${escapeHtml(p.badge || p.category)}</span>
+      </div>
+      <div class="dash-project-actions">
+        <label class="toggle-switch" title="Toggle Visibility">
+          <input type="checkbox" data-proj-toggle-id="${p.id}" ${p.visible !== false ? 'checked' : ''} />
+          <span class="toggle-slider"></span>
+        </label>
+        <button class="btn btn-secondary btn-sm edit-proj-btn" data-proj-id="${p.id}" type="button">Edit</button>
+        <button class="btn btn-secondary btn-sm delete-proj-btn" data-proj-id="${p.id}" type="button" style="color:#ef4444;">Delete</button>
+      </div>
+    </div>
+  `).join('');
+
+  projList.querySelectorAll('input[data-proj-toggle-id]').forEach((input) => {
+    input.addEventListener('change', () => {
+      const id = input.getAttribute('data-proj-toggle-id');
+      const proj = appData.projects.find((p) => p.id === id);
+      if (proj) {
+        proj.visible = input.checked;
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateProjectsTab();
+      }
+    });
+  });
+
+  projList.querySelectorAll('.edit-proj-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-proj-id');
+      openProjectEditor(id);
+    });
+  });
+
+  projList.querySelectorAll('.delete-proj-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-proj-id');
+      const proj = appData.projects.find((p) => p.id === id);
+      if (proj && confirm(`Delete project "${proj.title}" permanently?`)) {
+        appData.projects = appData.projects.filter((p) => p.id !== id);
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateProjectsTab();
+        showToast(`Deleted "${proj.title}".`);
+      }
+    });
+  });
+}
+
 function initProjectEditor() {
   const modal = document.getElementById('projectEditorModal');
   const closeBtn = document.getElementById('projectEditorCloseBtn');
@@ -792,9 +1292,7 @@ function initProjectEditor() {
   if (backdrop) backdrop.addEventListener('click', () => closeModalEl(modal));
 
   if (addNewBtn) {
-    addNewBtn.addEventListener('click', () => {
-      openProjectEditor(null);
-    });
+    addNewBtn.addEventListener('click', () => openProjectEditor(null));
   }
 
   if (form) {
@@ -814,7 +1312,6 @@ function initProjectEditor() {
       const features = featuresStr ? featuresStr.split('\n').map((f) => f.trim()).filter(Boolean) : [];
 
       if (projId) {
-        // Edit existing
         const proj = appData.projects.find((p) => p.id === projId);
         if (proj) {
           proj.title = title;
@@ -827,7 +1324,6 @@ function initProjectEditor() {
           proj.visible = visible;
         }
       } else {
-        // Add new
         const newId = 'proj_' + Date.now();
         appData.projects.push({
           id: newId,
@@ -844,7 +1340,7 @@ function initProjectEditor() {
 
       savePortfolioDataLocally();
       renderPortfolio();
-      populateDashboardFields();
+      populateProjectsTab();
       closeModalEl(modal);
       showToast(`Saved "${title}"!`);
     });
@@ -884,6 +1380,152 @@ function openProjectEditor(projectId) {
 }
 
 // ------------------------------------------------------------------
+// Services Management Tab
+// ------------------------------------------------------------------
+function populateServicesTab() {
+  const container = document.getElementById('dashServicesList');
+  if (!container) return;
+
+  container.innerHTML = appData.services.map((service) => `
+    <div class="dash-card-item" data-service-id="${service.id}">
+      <div class="dash-card-header">
+        <div>
+          <span class="dash-card-title">${escapeHtml(service.title)}</span>
+          ${service.visible === false ? '<span style="font-size:0.75rem; color:#fbbf24; margin-left:0.5rem;">[Hidden from Public]</span>' : ''}
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <label class="toggle-switch" title="Toggle Service Visibility">
+            <input type="checkbox" class="toggle-service-vis" data-service-id="${service.id}" ${service.visible !== false ? 'checked' : ''} />
+            <span class="toggle-slider"></span>
+          </label>
+          <button class="btn btn-secondary btn-sm edit-service-btn" data-service-id="${service.id}" type="button">Edit</button>
+          <button class="btn btn-secondary btn-sm delete-service-btn" data-service-id="${service.id}" type="button" style="color:#ef4444;">Delete</button>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-secondary);">${escapeHtml(service.desc)}</p>
+      
+      <ul class="dash-bullets-preview">
+        ${(service.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+
+  // Toggle service visibility
+  container.querySelectorAll('.toggle-service-vis').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+      const id = toggle.getAttribute('data-service-id');
+      const service = appData.services.find((s) => s.id === id);
+      if (service) {
+        service.visible = toggle.checked;
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateServicesTab();
+      }
+    });
+  });
+
+  // Edit service
+  container.querySelectorAll('.edit-service-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-service-id');
+      openServiceEditor(id);
+    });
+  });
+
+  // Delete service
+  container.querySelectorAll('.delete-service-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-service-id');
+      const service = appData.services.find((s) => s.id === id);
+      if (service && confirm(`Delete service "${service.title}"?`)) {
+        appData.services = appData.services.filter((s) => s.id !== id);
+        savePortfolioDataLocally();
+        renderPortfolio();
+        populateServicesTab();
+        showToast(`Deleted service "${service.title}".`);
+      }
+    });
+  });
+}
+
+function initServiceEditor() {
+  const modal = document.getElementById('serviceEditorModal');
+  const closeBtn = document.getElementById('serviceEditorCloseBtn');
+  const backdrop = document.getElementById('serviceEditorBackdrop');
+  const addBtn = document.getElementById('addNewServiceBtn');
+  const form = document.getElementById('serviceEditorForm');
+
+  if (closeBtn) closeBtn.addEventListener('click', () => closeModalEl(modal));
+  if (backdrop) backdrop.addEventListener('click', () => closeModalEl(modal));
+
+  if (addBtn) {
+    addBtn.addEventListener('click', () => openServiceEditor(null));
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const sId = document.getElementById('editServiceId').value;
+      const title = document.getElementById('editServiceTitle').value.trim();
+      const desc = document.getElementById('editServiceDesc').value.trim();
+      const bulletsStr = document.getElementById('editServiceBullets').value.trim();
+      const visible = document.getElementById('editServiceVisible').checked;
+
+      const bullets = bulletsStr ? bulletsStr.split('\n').map((b) => b.trim()).filter(Boolean) : [];
+
+      if (sId) {
+        const service = appData.services.find((s) => s.id === sId);
+        if (service) {
+          service.title = title;
+          service.desc = desc;
+          service.bullets = bullets;
+          service.visible = visible;
+        }
+      } else {
+        appData.services.push({
+          id: 'service_' + Date.now(),
+          title,
+          desc,
+          bullets,
+          visible
+        });
+      }
+
+      savePortfolioDataLocally();
+      renderPortfolio();
+      populateServicesTab();
+      closeModalEl(modal);
+      showToast(`Saved service "${title}"!`);
+    });
+  }
+}
+
+function openServiceEditor(serviceId) {
+  const modal = document.getElementById('serviceEditorModal');
+  const heading = document.getElementById('serviceEditorHeading');
+  const form = document.getElementById('serviceEditorForm');
+
+  if (form) form.reset();
+
+  if (serviceId) {
+    const service = appData.services.find((s) => s.id === serviceId);
+    if (!service) return;
+    if (heading) heading.textContent = `Edit Service: ${service.title}`;
+    document.getElementById('editServiceId').value = service.id;
+    document.getElementById('editServiceTitle').value = service.title || '';
+    document.getElementById('editServiceDesc').value = service.desc || '';
+    document.getElementById('editServiceBullets').value = (service.bullets || []).join('\n');
+    document.getElementById('editServiceVisible').checked = service.visible !== false;
+  } else {
+    if (heading) heading.textContent = 'Add New Service';
+    document.getElementById('editServiceId').value = '';
+    document.getElementById('editServiceVisible').checked = true;
+  }
+
+  openModalEl(modal);
+}
+
+// ------------------------------------------------------------------
 // GitHub REST API Direct Commit Integration
 // ------------------------------------------------------------------
 function initGitHubSync() {
@@ -907,7 +1549,6 @@ function initGitHubSync() {
       return;
     }
 
-    // Save token in browser storage
     localStorage.setItem('vd_github_pat', token);
 
     if (statusEl) {
@@ -921,7 +1562,6 @@ function initGitHubSync() {
       const filePath = 'data/portfolio-data.json';
       const fileUrl = `https://api.github.com/repos/${repo}/contents/${filePath}?ref=${branch}`;
 
-      // 1. Get current file SHA
       const getRes = await fetch(fileUrl, {
         headers: {
           Authorization: `token ${token}`,
@@ -937,11 +1577,9 @@ function initGitHubSync() {
         throw new Error('Invalid GitHub token. Please verify permissions (repo scope required).');
       }
 
-      // 2. Prepare UTF-8 base64 encoded content
       const contentStr = JSON.stringify(appData, null, 2);
       const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
 
-      // 3. Commit new version to GitHub repository
       const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
@@ -950,7 +1588,7 @@ function initGitHubSync() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: 'chore(portfolio): update portfolio content & visibility via Owner Dashboard',
+          message: 'chore(portfolio): update skills, projects, about & services via Owner Dashboard',
           content: encodedContent,
           sha: currentSha,
           branch: branch
@@ -1111,7 +1749,6 @@ function initNavbarScroll() {
     });
   }
 
-  // Filter project buttons
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {

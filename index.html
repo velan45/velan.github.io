@@ -227,7 +227,10 @@
     <section class="section about-section" id="about">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">About Me</span>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="section-tag">About Me</span>
+            <button class="section-edit-btn" data-edit-tab="tab-about" type="button" title="Edit About Me section">✏️ Edit About</button>
+          </div>
           <h2 class="section-title">Driven by Curiosity, Built on Solid Engineering</h2>
           <p class="section-subtitle">A glimpse into my background, technical philosophy, and what drives my work every day.</p>
         </div>
@@ -244,55 +247,13 @@
               Beyond the terminal and editor, I am a passionate football enthusiast and a proud admirer of Lionel Messi's playmaking artistry — a standard of precision, composure under pressure, and vision that I strive to bring into my engineering craft.
             </p>
 
-            <div class="about-highlights-list">
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div>
-                  <strong>End-to-End Delivery:</strong> Concept design, frontend UI, backend logic, and production deployment.
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div>
-                  <strong>Low-Level & High-Level Fluency:</strong> Comfortable across C++ socket programming, Python automation, and modern JavaScript.
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div>
-                  <strong>Collaborative & Agile:</strong> Experienced working independently as a freelancer and alongside cross-functional teams.
-                </div>
-              </div>
+            <div class="about-highlights-list" id="aboutHighlightsList">
+              <!-- Dynamically populated from data -->
             </div>
           </div>
 
-          <div class="about-stats-cards">
-            <div class="stat-card">
-              <div class="stat-number">Full-Stack</div>
-              <div class="stat-label">Web & Backend Engineering</div>
-              <p class="stat-sub">From responsive UIs to API design</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">Polyglot</div>
-              <div class="stat-label">JavaScript, Python, C++</div>
-              <p class="stat-sub">Versatility across modern tech stacks</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Commitment to Quality</div>
-              <p class="stat-sub">Clean architecture & testable code</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">Remote</div>
-              <div class="stat-label">Global Collaboration</div>
-              <p class="stat-sub">Available worldwide across timezones</p>
-            </div>
+          <div class="about-stats-cards" id="aboutStatsCards">
+            <!-- Dynamically populated from data -->
           </div>
         </div>
       </div>
@@ -302,81 +263,16 @@
     <section class="section skills-section" id="skills">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Tech Stack</span>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="section-tag">Tech Stack</span>
+            <button class="section-edit-btn" data-edit-tab="tab-skills" type="button" title="Edit Skills & Tech Stack">✏️ Edit Skills</button>
+          </div>
           <h2 class="section-title">Skills & Technologies</h2>
           <p class="section-subtitle">Tools, languages, and frameworks I use to bring ideas to reality.</p>
         </div>
 
-        <div class="skills-grid">
-          <!-- Skill Category 1 -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </div>
-              <h3 class="category-title">Frontend Development</h3>
-            </div>
-            <p class="category-description">Creating fast, accessible, responsive, and delightful user interfaces.</p>
-            <div class="skill-pills">
-              <span class="skill-pill">JavaScript (ES6+)</span>
-              <span class="skill-pill">HTML5 & Semantic Web</span>
-              <span class="skill-pill">Modern CSS3 / Flexbox / Grid</span>
-              <span class="skill-pill">Responsive Design</span>
-              <span class="skill-pill">DOM & Web APIs</span>
-              <span class="skill-pill">Vite & Build Tools</span>
-              <span class="skill-pill">UI / UX Prototyping</span>
-            </div>
-          </div>
-
-          <!-- Skill Category 2 -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
-                  <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
-                  <line x1="6" x2="6.01" y1="6" y2="6"></line>
-                  <line x1="6" x2="6.01" y1="18" y2="18"></line>
-                </svg>
-              </div>
-              <h3 class="category-title">Backend & Systems</h3>
-            </div>
-            <p class="category-description">Architecting dependable logic, networking layers, and data flows.</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Python Development</span>
-              <span class="skill-pill">C++ Systems Programming</span>
-              <span class="skill-pill">Node.js Runtime</span>
-              <span class="skill-pill">Linux Socket Programming</span>
-              <span class="skill-pill">RESTful API Integration</span>
-              <span class="skill-pill">Networking Protocols (TCP/IP, ICMP)</span>
-              <span class="skill-pill">System Health & Monitoring</span>
-            </div>
-          </div>
-
-          <!-- Skill Category 3 -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 5a2 2 0 0 1-2 2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a2 2 0 0 1 2 2c0 2-2 3-2 5a4 4 0 0 0 8 0c0-2-2-3-2-5a2 2 0 0 1 2-2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4a2 2 0 0 1-2-2c0-2 2-3 2-5a4 4 0 0 0-4-4z"></path>
-                </svg>
-              </div>
-              <h3 class="category-title">Tools, AI & DevOps</h3>
-            </div>
-            <p class="category-description">Automation workflows, version control, and intelligent integrations.</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Git & GitHub Workflow</span>
-              <span class="skill-pill">Linux Shell & Bash</span>
-              <span class="skill-pill">LLM & AI Prompt Pipelines</span>
-              <span class="skill-pill">Resume / Document AI Parsers</span>
-              <span class="skill-pill">GitHub Pages Hosting</span>
-              <span class="skill-pill">Debugging & Performance Profiling</span>
-              <span class="skill-pill">Visual Studio Code</span>
-            </div>
-          </div>
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Dynamically populated from data -->
         </div>
       </div>
     </section>
@@ -385,8 +281,11 @@
     <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Featured Work</span>
-          <h2 class="section-title">Projects & Open Source</h2>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="section-tag">Featured Work</span>
+            <button class="section-edit-btn" data-edit-tab="tab-projects" type="button" title="Manage Projects">✏️ Manage Projects</button>
+          </div>
+          <h2 class="section-title">Projects &amp; Open Source</h2>
           <p class="section-subtitle">Explore a selection of real-world projects spanning web apps, AI tools, and networking utilities.</p>
         </div>
 
@@ -599,71 +498,16 @@
     <section class="section services-section" id="services">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Services</span>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="section-tag">Services</span>
+            <button class="section-edit-btn" data-edit-tab="tab-services" type="button" title="Manage Services">✏️ Manage Services</button>
+          </div>
           <h2 class="section-title">What I Can Do For You</h2>
           <p class="section-subtitle">Delivering high quality software solutions for businesses, startups, and clients.</p>
         </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                <path d="M3 9h18"></path>
-                <path d="M9 21V9"></path>
-              </svg>
-            </div>
-            <h3 class="service-title">Full-Stack Web Development</h3>
-            <p class="service-desc">
-              Building intuitive, mobile-first web applications and interactive landing pages with performant frontends and clean server-side integrations.
-            </p>
-            <ul class="service-bullets">
-              <li>Modern responsive design & accessible UI</li>
-              <li>High lighthouse performance & SEO</li>
-              <li>Single-page apps & dynamic dashboards</li>
-            </ul>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-              </svg>
-            </div>
-            <h3 class="service-title">Backend & Network Utilities</h3>
-            <p class="service-desc">
-              Developing robust backend services, socket-based network diagnostics, automated health monitors, and system utilities in Python and C++.
-            </p>
-            <ul class="service-bullets">
-              <li>RESTful APIs & data pipelines</li>
-              <li>Low-latency socket programming & pinging</li>
-              <li>Server uptime monitoring & alerts</li>
-            </ul>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v4"></path>
-                <path d="m4.93 4.93 2.83 2.83"></path>
-                <path d="M2 12h4"></path>
-                <path d="m4.93 19.07 2.83-2.83"></path>
-                <path d="M12 18v4"></path>
-                <path d="m16.24 16.24 2.83 2.83"></path>
-                <path d="M18 12h4"></path>
-                <path d="m16.24 7.76 2.83-2.83"></path>
-              </svg>
-            </div>
-            <h3 class="service-title">AI Integration & Automation</h3>
-            <p class="service-desc">
-              Leveraging modern AI, prompt harnesses, and script automation to optimize workflows, match resumes, analyze sentiment, and eliminate manual tasks.
-            </p>
-            <ul class="service-bullets">
-              <li>LLM integration & resume analyzers</li>
-              <li>Workflow automation scripts in Python</li>
-              <li>Data extraction & content generation</li>
-            </ul>
-          </div>
+        <div class="services-grid" id="servicesGrid">
+          <!-- Dynamically populated from data -->
         </div>
       </div>
     </section>
@@ -839,12 +683,14 @@
       <div class="dashboard-header">
         <div class="dashboard-title-group">
           <h2>Portfolio Management &amp; Visibility</h2>
-          <p>Control what is shown to public visitors, update content, and publish updates to GitHub.</p>
+          <p>Easily edit your Skills, Projects, About Me, and Services, and publish updates live to GitHub.</p>
         </div>
         <div class="dashboard-tabs" role="tablist">
-          <button class="dash-tab active" data-tab="tab-visibility" type="button">👁️ Visibility &amp; Sections</button>
-          <button class="dash-tab" data-tab="tab-projects" type="button">💼 Manage Projects</button>
-          <button class="dash-tab" data-tab="tab-profile" type="button">👤 Profile &amp; Bio</button>
+          <button class="dash-tab active" data-tab="tab-visibility" type="button">👁️ Visibility</button>
+          <button class="dash-tab" data-tab="tab-about" type="button">👤 About Me</button>
+          <button class="dash-tab" data-tab="tab-skills" type="button">⚡ Skills</button>
+          <button class="dash-tab" data-tab="tab-projects" type="button">💼 Projects</button>
+          <button class="dash-tab" data-tab="tab-services" type="button">🛠️ Services</button>
           <button class="dash-tab" data-tab="tab-sync" type="button">🚀 Publish &amp; Sync</button>
         </div>
       </div>
@@ -879,23 +725,10 @@
         </div>
       </div>
 
-      <!-- TAB 2: PROJECTS MANAGER -->
-      <div id="tab-projects" class="dash-tab-pane">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-          <h4 style="font-size: 1.1rem; margin: 0;">Your Project Catalog</h4>
-          <button id="addNewProjectBtn" class="btn btn-primary btn-sm" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Add New Project</span>
-          </button>
-        </div>
-        <div id="dashProjectsList">
-          <!-- Injected via JS -->
-        </div>
-      </div>
-
-      <!-- TAB 3: PROFILE & BIO -->
-      <div id="tab-profile" class="dash-tab-pane">
+      <!-- TAB 2: ABOUT ME & BIO -->
+      <div id="tab-about" class="dash-tab-pane">
         <form id="profileEditForm">
+          <h4 class="dash-section-divider" style="margin-top:0;">Profile &amp; Header Info</h4>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
             <div class="form-group">
               <label for="profNameInput" class="form-label">Display Name</label>
@@ -916,7 +749,7 @@
               <input type="email" id="profEmailInput" class="form-input" required />
             </div>
             <div class="form-group">
-              <label for="profLocationInput" class="form-label">Location / Status</label>
+              <label for="profLocationInput" class="form-label">Location / Availability</label>
               <input type="text" id="profLocationInput" class="form-input" />
             </div>
           </div>
@@ -930,23 +763,78 @@
               <input type="url" id="profLinkedinInput" class="form-input" />
             </div>
           </div>
+
+          <h4 class="dash-section-divider">Narrative Bio Story</h4>
           <div class="form-group" style="margin-bottom: 1rem;">
-            <label for="profBioLeadInput" class="form-label">About Me - Lead Paragraph</label>
+            <label for="profBioLeadInput" class="form-label">Lead Paragraph (Bold Intro)</label>
             <textarea id="profBioLeadInput" class="form-input" rows="3"></textarea>
           </div>
           <div class="form-group" style="margin-bottom: 1rem;">
-            <label for="profBioStoryInput" class="form-label">About Me - Engineering Story</label>
+            <label for="profBioStoryInput" class="form-label">Engineering Story (Technical Focus)</label>
             <textarea id="profBioStoryInput" class="form-input" rows="3"></textarea>
           </div>
-          <div class="form-group" style="margin-bottom: 1.5rem;">
-            <label for="profBioPersonalInput" class="form-label">Personal Interest / Football / Messi</label>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="profBioPersonalInput" class="form-label">Personal Interest / Messi &amp; Football Note</label>
             <textarea id="profBioPersonalInput" class="form-input" rows="2"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">Save Profile Changes</button>
+
+          <h4 class="dash-section-divider">Key Highlights (3 Features)</h4>
+          <div id="dashAboutHighlightsList">
+            <!-- Injected via JS -->
+          </div>
+
+          <h4 class="dash-section-divider">Quick Stat Cards (4 Highlights)</h4>
+          <div id="dashAboutStatsList">
+            <!-- Injected via JS -->
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 1rem;">Save About Me Changes</button>
         </form>
       </div>
 
-      <!-- TAB 4: PUBLISH & SYNC -->
+      <!-- TAB 3: SKILLS & TECH STACK -->
+      <div id="tab-skills" class="dash-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 1.1rem; margin: 0;">Skill Categories &amp; Tags</h4>
+          <button id="addNewSkillCategoryBtn" class="btn btn-primary btn-sm" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add New Category</span>
+          </button>
+        </div>
+        <div id="dashSkillsList">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 4: PROJECTS MANAGER -->
+      <div id="tab-projects" class="dash-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 1.1rem; margin: 0;">Your Project Catalog</h4>
+          <button id="addNewProjectBtn" class="btn btn-primary btn-sm" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add New Project</span>
+          </button>
+        </div>
+        <div id="dashProjectsList">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 5: SERVICES MANAGER -->
+      <div id="tab-services" class="dash-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 1.1rem; margin: 0;">Services &amp; Offerings</h4>
+          <button id="addNewServiceBtn" class="btn btn-primary btn-sm" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add New Service</span>
+          </button>
+        </div>
+        <div id="dashServicesList">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 6: PUBLISH & SYNC -->
       <div id="tab-sync" class="dash-tab-pane">
         <!-- Direct GitHub Commit -->
         <div class="sync-card">
@@ -1060,6 +948,86 @@
             </label>
           </div>
           <button type="submit" class="btn btn-primary w-full">Save Project</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill Category Add / Edit Modal -->
+  <div id="skillCategoryModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="skillCategoryBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="skillCategoryCloseBtn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-content">
+        <h3 id="skillCategoryHeading" class="modal-title" style="font-size: 1.4rem;">Edit Skill Category</h3>
+        <form id="skillCategoryForm">
+          <input type="hidden" id="editSkillCatId" />
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editSkillCatTitle" class="form-label">Category Title</label>
+            <input type="text" id="editSkillCatTitle" class="form-input" required placeholder="e.g. Cloud & DevOps" />
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editSkillCatDesc" class="form-label">Category Description</label>
+            <input type="text" id="editSkillCatDesc" class="form-input" placeholder="e.g. CI/CD pipelines, containerization, and monitoring" />
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editSkillCatItems" class="form-label">Skills (comma-separated list)</label>
+            <textarea id="editSkillCatItems" class="form-input" rows="3" placeholder="Docker, Kubernetes, AWS, GitHub Actions, Linux"></textarea>
+            <span class="form-hint">Separate each skill or tool with a comma</span>
+          </div>
+          <div class="control-row" style="margin-bottom: 1.5rem;">
+            <div class="control-label-group">
+              <span class="control-title">Make Category Visible</span>
+              <span class="control-desc">Toggles this skill category card on your website</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="editSkillCatVisible" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary w-full">Save Skill Category</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Add / Edit Modal -->
+  <div id="serviceEditorModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="serviceEditorBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="serviceEditorCloseBtn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-content">
+        <h3 id="serviceEditorHeading" class="modal-title" style="font-size: 1.4rem;">Edit Service</h3>
+        <form id="serviceEditorForm">
+          <input type="hidden" id="editServiceId" />
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editServiceTitle" class="form-label">Service Title</label>
+            <input type="text" id="editServiceTitle" class="form-input" required placeholder="e.g. Technical Consulting & Code Review" />
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editServiceDesc" class="form-label">Description</label>
+            <textarea id="editServiceDesc" class="form-input" rows="3" required placeholder="Describe what you deliver for clients and teams..."></textarea>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="editServiceBullets" class="form-label">Bullet Highlights (one per line)</label>
+            <textarea id="editServiceBullets" class="form-input" rows="4" placeholder="Architecture review & security check&#10;Performance bottlenecks profiling&#10;Refactoring legacy code"></textarea>
+            <span class="form-hint">Each line will become a checkmark item</span>
+          </div>
+          <div class="control-row" style="margin-bottom: 1.5rem;">
+            <div class="control-label-group">
+              <span class="control-title">Make Service Visible</span>
+              <span class="control-desc">Toggles this service card on your website</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="editServiceVisible" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary w-full">Save Service</button>
         </form>
       </div>
     </div>
