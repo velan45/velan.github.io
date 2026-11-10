@@ -1,28 +1,843 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Black+Ops+One&family=Creepster&family=La+Belle+Aurore&family=MedievalSharp&family=Orbitron&family=Rye&display=swap" rel="stylesheet">
-        <script src="index.js"></script>
-        <title> VelansProfile   </title>
-    </head>
-    <body>
-        <div class="card">
-        <img class="profile-picture" src = "./IMG-20230717-WA0002.jpg" alt="showing profile picture in parvathy valley" />
-            <div class="profile-info">
-                <h1> Velan D</h1>
-                <h2>Software developer </h2>
-                <h2>Freelancer</h2>
-            </div>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Velan D - Software Developer & Full Stack Freelancer. Portfolio showcasing web development, AI tools, low-level networking, and system performance projects." />
+  <meta name="keywords" content="Velan D, Software Developer, Full Stack, Freelancer, Python, JavaScript, C++, Portfolio, Web Development" />
+  <meta name="author" content="Velan D" />
+  <meta property="og:title" content="Velan D | Software Developer & Freelancer" />
+  <meta property="og:description" content="Explore projects, skills, and engineering solutions built by Velan D." />
+  <meta property="og:type" content="website" />
+  <title>Velan D | Software Developer & Freelancer</title>
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- Background Ambient Glow Effects -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Velan D Home">
+        <span class="brand-badge">VD</span>
+        <span class="brand-name">Velan<span class="brand-dot">.</span>dev</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-sm btn-primary nav-cta">Let's Talk</a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobileMenuBtn" class="icon-btn mobile-menu-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link">Home</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <a href="#contact" class="btn btn-primary w-full">Let's Talk</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="section hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-pulse"></span>
+            <span>Available for Freelance & New Opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Velan D</span>
+          </h1>
+
+          <div class="hero-typewriter-wrapper">
+            <span class="hero-static-text">I build </span>
+            <span class="typewriter-text" id="typewriter">scalable web solutions</span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            Software Developer & Full-Stack Freelancer with a passion for building robust web applications, AI tools, low-level socket utilities, and resilient backend systems.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore My Work</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <div class="hero-socials">
+            <span class="socials-label">Connect:</span>
+            <a href="https://github.com/velan45" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/velan-d-43486118b/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="mailto:velan45@gmail.com" class="social-icon" aria-label="Email Velan" title="Email: velan45@gmail.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-         <h2> Quick Info about myself</h2>
-         <ul>
-            <li>I am 34 years</li>
-            <li>Love Football</li>
-            <li>Big fan of Messi</li>
-        </ul>
-        <p> please checkout my 
-            <a href=" https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank"> Linkedin Profile</a>
+
+        <!-- Hero Visual Profile Card -->
+        <div class="hero-visual">
+          <div class="profile-card-wrapper">
+            <div class="profile-card-glow"></div>
+            <div class="profile-card">
+              <div class="profile-image-container">
+                <img
+                  src="./IMG-20230717-WA0002.jpg"
+                  alt="Velan D - Software Developer"
+                  class="profile-img"
+                  loading="eager"
+                />
+                <div class="profile-online-badge" title="Active & Ready to Collaborate">
+                  <span class="online-indicator"></span>
+                </div>
+              </div>
+              <div class="profile-card-details">
+                <h3 class="profile-card-name">Velan D</h3>
+                <p class="profile-card-role">Software Developer & Freelancer</p>
+                <div class="profile-card-tags">
+                  <span class="chip">Full Stack</span>
+                  <span class="chip">Python / C++</span>
+                  <span class="chip">AI & Systems</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Highlights Badges -->
+            <div class="floating-badge floating-badge-1">
+              <div class="badge-icon">⚡</div>
+              <div class="badge-text">
+                <strong>Clean & Fast Code</strong>
+                <span>Optimized Performance</span>
+              </div>
+            </div>
+
+            <div class="floating-badge floating-badge-2">
+              <div class="badge-icon">⚽</div>
+              <div class="badge-text">
+                <strong>Messi & Football Fan</strong>
+                <span>Team Player Mindset</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Driven by Curiosity, Built on Solid Engineering</h2>
+          <p class="section-subtitle">A glimpse into my background, technical philosophy, and what drives my work every day.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text-content">
+            <p class="lead-text">
+              I am a software developer and independent freelancer with an unyielding curiosity for how things work under the hood — from high-level web applications down to low-level Linux socket communications.
+            </p>
+            <p>
+              Whether it's building interactive user experiences, architecting AI-powered tools like <span class="highlight-text">DreamCatcher</span> and <span class="highlight-text">Resume-Matcher</span>, or profiling network round-trip latencies in C++, I believe in crafting software that is not only functional, but clean, maintainable, and reliable.
+            </p>
+            <p>
+              Beyond the terminal and editor, I am a passionate football enthusiast and a proud admirer of Lionel Messi's playmaking artistry — a standard of precision, composure under pressure, and vision that I strive to bring into my engineering craft.
+            </p>
+
+            <div class="about-highlights-list">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>End-to-End Delivery:</strong> Concept design, frontend UI, backend logic, and production deployment.
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>Low-Level & High-Level Fluency:</strong> Comfortable across C++ socket programming, Python automation, and modern JavaScript.
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>Collaborative & Agile:</strong> Experienced working independently as a freelancer and alongside cross-functional teams.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-stats-cards">
+            <div class="stat-card">
+              <div class="stat-number">Full-Stack</div>
+              <div class="stat-label">Web & Backend Engineering</div>
+              <p class="stat-sub">From responsive UIs to API design</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">Polyglot</div>
+              <div class="stat-label">JavaScript, Python, C++</div>
+              <p class="stat-sub">Versatility across modern tech stacks</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Commitment to Quality</div>
+              <p class="stat-sub">Clean architecture & testable code</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">Remote</div>
+              <div class="stat-label">Global Collaboration</div>
+              <p class="stat-sub">Available worldwide across timezones</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Tech Stack</span>
+          <h2 class="section-title">Skills & Technologies</h2>
+          <p class="section-subtitle">Tools, languages, and frameworks I use to bring ideas to reality.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Category 1 -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <h3 class="category-title">Frontend Development</h3>
+            </div>
+            <p class="category-description">Creating fast, accessible, responsive, and delightful user interfaces.</p>
+            <div class="skill-pills">
+              <span class="skill-pill">JavaScript (ES6+)</span>
+              <span class="skill-pill">HTML5 & Semantic Web</span>
+              <span class="skill-pill">Modern CSS3 / Flexbox / Grid</span>
+              <span class="skill-pill">Responsive Design</span>
+              <span class="skill-pill">DOM & Web APIs</span>
+              <span class="skill-pill">Vite & Build Tools</span>
+              <span class="skill-pill">UI / UX Prototyping</span>
+            </div>
+          </div>
+
+          <!-- Skill Category 2 -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                  <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                  <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                  <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                </svg>
+              </div>
+              <h3 class="category-title">Backend & Systems</h3>
+            </div>
+            <p class="category-description">Architecting dependable logic, networking layers, and data flows.</p>
+            <div class="skill-pills">
+              <span class="skill-pill">Python Development</span>
+              <span class="skill-pill">C++ Systems Programming</span>
+              <span class="skill-pill">Node.js Runtime</span>
+              <span class="skill-pill">Linux Socket Programming</span>
+              <span class="skill-pill">RESTful API Integration</span>
+              <span class="skill-pill">Networking Protocols (TCP/IP, ICMP)</span>
+              <span class="skill-pill">System Health & Monitoring</span>
+            </div>
+          </div>
+
+          <!-- Skill Category 3 -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 5a2 2 0 0 1-2 2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a2 2 0 0 1 2 2c0 2-2 3-2 5a4 4 0 0 0 8 0c0-2-2-3-2-5a2 2 0 0 1 2-2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4a2 2 0 0 1-2-2c0-2 2-3 2-5a4 4 0 0 0-4-4z"></path>
+                </svg>
+              </div>
+              <h3 class="category-title">Tools, AI & DevOps</h3>
+            </div>
+            <p class="category-description">Automation workflows, version control, and intelligent integrations.</p>
+            <div class="skill-pills">
+              <span class="skill-pill">Git & GitHub Workflow</span>
+              <span class="skill-pill">Linux Shell & Bash</span>
+              <span class="skill-pill">LLM & AI Prompt Pipelines</span>
+              <span class="skill-pill">Resume / Document AI Parsers</span>
+              <span class="skill-pill">GitHub Pages Hosting</span>
+              <span class="skill-pill">Debugging & Performance Profiling</span>
+              <span class="skill-pill">Visual Studio Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Featured Work</span>
+          <h2 class="section-title">Projects & Open Source</h2>
+          <p class="section-subtitle">Explore a selection of real-world projects spanning web apps, AI tools, and networking utilities.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="project-filters" role="tablist" aria-label="Project Categories">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web & AI</button>
+          <button class="filter-btn" data-filter="systems" role="tab" aria-selected="false">Systems & Networking</button>
+          <button class="filter-btn" data-filter="tools" role="tab" aria-selected="false">Python & Tools</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          
+          <!-- Project 1: DreamCatcher -->
+          <article class="project-card" data-category="web" data-project-id="dreamcatcher">
+            <div class="project-card-header">
+              <div class="project-badge">Web & AI</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/DreamCatcher" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="DreamCatcher GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">DreamCatcher</h3>
+              <p class="project-desc">
+                An interactive web application that captures user dreams, performs semantic interpretation, and breaks down recurring subconscious themes into actionable reflections.
+              </p>
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">AI / NLP</span>
+                <span class="tag">Web App</span>
+                <span class="tag">UI/UX</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="dreamcatcher">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 2: Resume-Matcher -->
+          <article class="project-card" data-category="tools" data-project-id="resumematcher">
+            <div class="project-card-header">
+              <div class="project-badge">AI & Career Tech</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/Resume-Matcher" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="Resume Matcher GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Resume-Matcher & Analyzer</h3>
+              <p class="project-desc">
+                An intelligent AI harness designed for parsing resumes, comparing candidates against job descriptions, and generating tailored PDF resumes and cover letters with multi-LLM support.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">LLM Harness</span>
+                <span class="tag">PDF Generation</span>
+                <span class="tag">NLP</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="resumematcher">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 3: Socket Ping & Linux Networking -->
+          <article class="project-card" data-category="systems" data-project-id="socketping">
+            <div class="project-card-header">
+              <div class="project-badge">Systems & C++</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/socket_ping" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="Socket Ping GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Socket Ping & Linux Networking</h3>
+              <p class="project-desc">
+                High-performance Linux network tool implemented in C++ utilizing low-level POSIX sockets to measure Round Trip Time (RTT), packet jitter, and transmission health.
+              </p>
+              <div class="project-tags">
+                <span class="tag">C++</span>
+                <span class="tag">Linux Sockets</span>
+                <span class="tag">POSIX</span>
+                <span class="tag">Networking</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="socketping">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 4: Performance & Website Ping Monitor -->
+          <article class="project-card" data-category="tools" data-project-id="perfmonitor">
+            <div class="project-card-header">
+              <div class="project-badge">Automation & Health</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/performance_monitoring" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="Performance Monitoring GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">System & Website Ping Monitor</h3>
+              <p class="project-desc">
+                Automated Python tool that tracks website response codes, server latency, and system health metrics, providing early incident detection and status reporting.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Monitoring</span>
+                <span class="tag">Uptime</span>
+                <span class="tag">Automation</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="perfmonitor">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 5: Modern Developer Portfolio -->
+          <article class="project-card" data-category="web" data-project-id="portfolio">
+            <div class="project-card-header">
+              <div class="project-badge">Web & UI</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/velan.github.io" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="Portfolio GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Responsive Developer Portfolio</h3>
+              <p class="project-desc">
+                High-performance static portfolio website built with modern CSS variables, fluid responsive layouts, theme persistence, and frictionless GitHub Pages deployment.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML5/CSS3</span>
+                <span class="tag">Vanilla JS</span>
+                <span class="tag">GitHub Pages</span>
+                <span class="tag">Vite</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="portfolio">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 6: Linux Socket Lin -->
+          <article class="project-card" data-category="systems" data-project-id="socketlin">
+            <div class="project-card-header">
+              <div class="project-badge">Networking & Linux</div>
+              <div class="project-links">
+                <a href="https://github.com/velan45/socket_lin" target="_blank" rel="noopener noreferrer" class="project-icon-link" aria-label="Socket Lin GitHub Repository" title="View Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Linux Socket Programming Library</h3>
+              <p class="project-desc">
+                Clean, documented Linux socket implementations demonstrating client-server communication, packet handling, and multi-client connection management.
+              </p>
+              <div class="project-tags">
+                <span class="tag">C++</span>
+                <span class="tag">TCP/IP</span>
+                <span class="tag">Linux Daemon</span>
+                <span class="tag">Networking</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <button class="project-action-btn open-details-btn" data-project-id="socketlin">
+                <span>View Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES / WHAT I DO -->
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Services</span>
+          <h2 class="section-title">What I Can Do For You</h2>
+          <p class="section-subtitle">Delivering high quality software solutions for businesses, startups, and clients.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 21V9"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Full-Stack Web Development</h3>
+            <p class="service-desc">
+              Building intuitive, mobile-first web applications and interactive landing pages with performant frontends and clean server-side integrations.
+            </p>
+            <ul class="service-bullets">
+              <li>Modern responsive design & accessible UI</li>
+              <li>High lighthouse performance & SEO</li>
+              <li>Single-page apps & dynamic dashboards</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Backend & Network Utilities</h3>
+            <p class="service-desc">
+              Developing robust backend services, socket-based network diagnostics, automated health monitors, and system utilities in Python and C++.
+            </p>
+            <ul class="service-bullets">
+              <li>RESTful APIs & data pipelines</li>
+              <li>Low-latency socket programming & pinging</li>
+              <li>Server uptime monitoring & alerts</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4"></path>
+                <path d="m4.93 4.93 2.83 2.83"></path>
+                <path d="M2 12h4"></path>
+                <path d="m4.93 19.07 2.83-2.83"></path>
+                <path d="M12 18v4"></path>
+                <path d="m16.24 16.24 2.83 2.83"></path>
+                <path d="M18 12h4"></path>
+                <path d="m16.24 7.76 2.83-2.83"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">AI Integration & Automation</h3>
+            <p class="service-desc">
+              Leveraging modern AI, prompt harnesses, and script automation to optimize workflows, match resumes, analyze sentiment, and eliminate manual tasks.
+            </p>
+            <ul class="service-bullets">
+              <li>LLM integration & resume analyzers</li>
+              <li>Workflow automation scripts in Python</li>
+              <li>Data extraction & content generation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Let's Connect</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">Have a project idea, freelance opportunity, or just want to chat about tech and football? Feel free to reach out!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Column -->
+          <div class="contact-info-panel">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div class="contact-card-content">
+                <div class="contact-label">Email Me</div>
+                <div class="contact-value" id="emailText">velan45@gmail.com</div>
+                <button class="copy-email-btn" id="copyEmailBtn" title="Copy email address">
+                  <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                  <svg class="check-icon" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span id="copyEmailText">Copy email</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </div>
+              <div class="contact-card-content">
+                <div class="contact-label">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/velan-d-43486118b/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                  linkedin.com/in/velan-d
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </div>
+              <div class="contact-card-content">
+                <div class="contact-label">GitHub</div>
+                <a href="https://github.com/velan45" target="_blank" rel="noopener noreferrer" class="contact-link">
+                  github.com/velan45
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-card-content">
+                <div class="contact-label">Location & Status</div>
+                <div class="contact-value">India • Remote Worldwide</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form Column -->
+          <div class="contact-form-panel">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Johnson" required />
+                <span class="form-error" id="nameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" required />
+                <span class="form-error" id="emailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Project inquiry / Freelance contract" required />
+                <span class="form-error" id="subjectError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" rows="5" class="form-input form-textarea" placeholder="Tell me about your project, timeline, or requirements..." required></textarea>
+                <span class="form-error" id="messageError"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full submit-btn" id="submitBtn">
+                <span>Send Message</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <div id="formStatus" class="form-status" role="alert" style="display:none;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Details Modal -->
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-content" id="modalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast" role="alert" aria-live="polite">
+    <span id="toastMessage"></span>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo">
+            <span class="brand-badge">VD</span>
+            <span class="brand-name">Velan<span class="brand-dot">.</span>dev</span>
+          </a>
+          <p class="footer-bio">
+            Software Developer & Full Stack Freelancer. Crafting robust software and thoughtful digital experiences.
+          </p>
+        </div>
+
+        <div class="footer-nav">
+          <span class="footer-nav-title">Quick Navigation</span>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#skills">Tech Stack</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-socials-col">
+          <span class="footer-nav-title">Find Me Online</span>
+          <div class="footer-social-icons">
+            <a href="https://github.com/velan45" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/velan-d-43486118b/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:velan45@gmail.com" class="social-icon" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; <span id="currentYear">2026</span> Velan D. All rights reserved.
         </p>
-    </body>
+        <p class="made-with-text">
+          Designed with clean code &amp; passion for great engineering.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./index.js"></script>
+</body>
 </html>
