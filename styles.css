@@ -1726,3 +1726,372 @@ img {
     padding: 1.75rem 1.25rem;
   }
 }
+
+/* ===================================================================
+   16. Owner Mode & Admin Management Styles
+   =================================================================== */
+
+/* Top Floating Owner Bar */
+.owner-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  font-size: 0.875rem;
+}
+
+body.owner-mode-active {
+  padding-top: 48px;
+}
+
+body.owner-mode-active .navbar {
+  top: 48px;
+}
+
+.owner-bar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.owner-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.owner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.owner-status-text {
+  font-size: 0.85rem;
+  color: #e0e7ff;
+}
+
+.owner-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Owner Login Link in Footer */
+.owner-login-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.owner-login-link:hover {
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+  background: var(--bg-card);
+}
+
+/* Modal sizing variants */
+.modal-dialog-sm {
+  max-width: 440px;
+}
+
+.modal-dialog-lg {
+  max-width: 860px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dashboard Header & Tabs */
+.dashboard-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-title-group h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.dashboard-title-group p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.dashboard-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+}
+
+.dash-tab {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.dash-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.dash-tab.active {
+  color: #ffffff;
+  background: var(--accent-primary);
+}
+
+.dash-tab-pane {
+  display: none;
+  overflow-y: auto;
+  max-height: calc(88vh - 180px);
+  padding-right: 0.5rem;
+}
+
+.dash-tab-pane.active {
+  display: block;
+}
+
+/* iOS Style Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-normal);
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  transition: var(--transition-normal);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+input:checked + .toggle-slider {
+  background: var(--gradient-brand);
+  border-color: transparent;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
+
+/* Control Row Item */
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.control-row:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.control-label-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-title {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.control-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Dashboard Section Divider */
+.dash-section-divider {
+  margin: 1.75rem 0 1rem 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Project Manager Items in Dashboard */
+.dash-project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.dash-project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.dash-project-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dash-project-cat {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+}
+
+.dash-project-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Hidden project badge when in Owner Mode */
+.project-card.is-hidden-preview {
+  border: 2px dashed rgba(245, 158, 11, 0.6) !important;
+  position: relative;
+  opacity: 0.75;
+}
+
+.project-hidden-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.6);
+  color: #fbbf24;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 5;
+}
+
+/* Sync & Publish Tab Panels */
+.sync-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.sync-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sync-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.token-input-wrapper {
+  position: relative;
+}
+
+.form-hint {
+  display: block;
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.form-hint code {
+  background: var(--bg-elevated);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+}
+
+.dashboard-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+  margin-top: 1.5rem;
+}
