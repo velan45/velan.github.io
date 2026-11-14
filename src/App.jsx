@@ -17,7 +17,8 @@ import CommandPalette from "./components/CommandPalette.jsx";
 const SECTION_COMPONENTS = {
   about: About,
   experience: Experience,
-  credentials: Credentials,
+  resume: Credentials,
+  certificates: Credentials,
   skills: Skills,
   projects: Projects,
   services: Services,

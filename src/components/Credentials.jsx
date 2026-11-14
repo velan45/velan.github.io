@@ -15,32 +15,17 @@ const formatDate = (value) => {
 export default function Credentials({ section }) {
   const [viewing, setViewing] = useState(null);
 
+  const docs = section.id === "resume" ? resumes : certificates;
+
   return (
     <Section section={section}>
-      {resumes.length > 0 && (
-        <DocumentGroup title="Résumé" icon="file" docs={resumes} onView={setViewing} />
-      )}
-      {certificates.length > 0 && (
-        <DocumentGroup title="Certifications" icon="award" docs={certificates} onView={setViewing} />
-      )}
-      {viewing && <DocumentViewer doc={viewing} onClose={() => setViewing(null)} />}
-    </Section>
-  );
-}
-
-function DocumentGroup({ title, icon, docs, onView }) {
-  return (
-    <div className="docs">
-      <h3 className="docs__title">
-        <Icon name={icon} /> {title}
-        <span className="filter__count">{docs.length}</span>
-      </h3>
       <div className="grid grid--3">
         {docs.map((doc) => (
-          <DocumentCard key={doc.id} doc={doc} onView={() => onView(doc)} />
+          <DocumentCard key={doc.id} doc={doc} onView={() => setViewing(doc)} />
         ))}
       </div>
-    </div>
+      {viewing && <DocumentViewer doc={viewing} onClose={() => setViewing(null)} />}
+    </Section>
   );
 }
 

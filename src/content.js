@@ -57,7 +57,8 @@ export const certificates = buildDocuments(certificateFiles, data.documents?.cer
 export const primaryResume = resumes[0] ?? null;
 
 const hasContent = {
-  credentials: resumes.length + certificates.length > 0,
+  resume: resumes.length > 0,
+  certificates: certificates.length > 0,
 };
 
 /** Sections render in the order their keys appear in content/portfolio.json. */

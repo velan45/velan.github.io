@@ -61,7 +61,9 @@ export default function Hero({ onOpenPalette }) {
           <div className="profile-card">
             <div className="profile-card__glow" aria-hidden="true" />
             <div className="profile-card__avatar">
-              <img src={asset(profile.avatar)} alt={profile.name} width="160" height="160" loading="eager" />
+              <div className="profile-card__photo">
+                <img src={asset(profile.avatar)} alt={profile.name} width="160" height="160" loading="eager" />
+              </div>
               {profile.available && <span className="profile-card__online" title="Available" />}
             </div>
             <h2 className="profile-card__name">{profile.name}</h2>
