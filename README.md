@@ -1,77 +1,106 @@
-# Velan D - Professional Developer Portfolio
+# Velan D — Developer Portfolio
 
-> Modern, responsive, and high-performance portfolio website showcasing projects in full-stack web development, AI tooling, Linux socket programming, and systems engineering.
+React + Vite static portfolio, deployed to GitHub Pages. **All content lives in one file: [content/portfolio.json](content/portfolio.json)** — no code changes needed to update the site.
 
-🌐 **Live Website**: [https://velan45.github.io](https://velan45.github.io)
+🌐 Live: https://velan45.github.io
 
----
+## Features
 
-## 👑 Owner Portal & Visibility Management (Private to You)
+- **Content-driven** — profile, sections, projects, skills, experience, services, testimonials and contact all come from JSON.
+- **Command palette** — press `Ctrl K` / `⌘K` to jump to sections, open projects, copy email or switch theme.
+- **Project case studies** — filterable gallery with Problem → Solution → Highlights dialogs.
+- **SEO built in** — meta tags, Open Graph/Twitter cards, schema.org `Person` JSON-LD, `sitemap.xml` and `robots.txt` generated at build time from the JSON.
+- **Dark/light theme** (system-aware, no flash), scroll progress, reveal animations, `prefers-reduced-motion` support.
+- **Accessible** — semantic landmarks, skip link, keyboard-friendly dialogs, focus styles.
+- **Zero backend** — contact form uses `mailto:` by default or any form service endpoint (e.g. Formspree).
 
-You have full control over what is displayed to public visitors directly from your browser:
+## Updating content
 
-### 1. How to Access the Owner Portal
-- **Method A**: Click the **"Owner Access"** button in the website footer.
-- **Method B**: Press the keyboard shortcut `Ctrl + Shift + A` (or `Cmd + Shift + A` on Mac) anywhere on the page.
-- **Master Passkey**: Enter your secret passkey (`velan-admin-2026` by default; can be changed in settings).
+Edit [content/portfolio.json](content/portfolio.json), commit and push to `main`. GitHub Actions rebuilds and deploys automatically. You can even edit it directly on github.com.
 
-### 2. What You Can Control
-- **👁️ Section Visibility**: Show or hide entire sections (About, Skills, Projects, Services, Contact, or Badges) with one click.
-- **💼 Project Visibility**: Toggle any project ON or OFF. Hidden projects are completely removed from public view, while remaining visible with a `[Hidden from Public]` tag in your Owner Mode preview.
-- **➕ Add / Edit Projects**: Add new projects, edit titles, descriptions, badges, tags, features, and source code links without writing code.
-- **👤 Profile & Bio**: Modify your headline, bio paragraphs, availability status ("Available" vs "Busy"), contact email, and social URLs.
-- **🚀 One-Click Publish to GitHub**:
-  - Enter your GitHub Personal Access Token in the **Publish & Sync** tab.
-  - Click **"Commit & Push Updates to GitHub"**.
-  - The portfolio communicates directly with the GitHub REST API to commit your updated `data/portfolio-data.json`.
-  - GitHub Pages will automatically deploy your updates worldwide in ~1–2 minutes!
-- **📥 Manual Export**: Download updated `portfolio-data.json` at any time.
+| Want to… | Change |
+| --- | --- |
+| Hide/show a section | `sections.<id>.visible` |
+| Reorder sections | Reorder the keys inside `sections` |
+| Rename nav label / heading | `sections.<id>.nav`, `.title`, `.eyebrow` |
+| Hide a project | `projects[].visible: false` |
+| Pin a project to the top | `projects[].featured: true` |
+| Add a live demo button | `projects[].demo: "https://…"` |
+| Add a résumé or certificate | Drop the file into `documents/` (see below) |
+| Change photo | Replace `public/profile.jpg` (or set `profile.avatar`) |
+| Toggle "available" badge | `profile.available`, `profile.availabilityText` |
+| Add a social link | `profile.socials[]` — `icon`: `github`, `linkedin`, `x`, `email`, `website` |
+| Use a real contact form | `contact.formEndpoint` (e.g. `https://formspree.io/f/xxxx`) |
+| Show testimonials | Fill `testimonials[]`, set `sections.testimonials.visible: true` |
+| Update SEO / domain | `site.*` |
 
----
+## Résumés & certificates (PDF / JPEG / PNG / WebP)
 
-## ✨ Key Portfolio Features
+Drop files into these folders — they are discovered automatically at build time, no code changes needed:
 
-- **Personalized Design System**: Custom CSS tokens supporting smooth dark mode & light mode toggling with `localStorage` persistence.
-- **Dynamic Typewriter & Micro-Interactions**: Fluid hero section with floating highlight badges, animated typewriter, and online availability indicator.
-- **Categorized Project Showcase**: Interactive filterable project gallery (Web & AI, Systems & Networking, Python & Tools) with deep-dive technical modals and direct GitHub links.
-- **Skills Matrix**: Categorized breakdown of frontend, backend, systems, and AI tools with skill pills.
-- **Interactive Contact Hub**: Email copy with instant toast confirmation, validated contact form with prefilled `mailto:` integration, and direct LinkedIn & GitHub links.
-- **Zero-Dependency Core**: Pure modern HTML5, CSS3, and Vanilla JavaScript for instant loading, high accessibility, and perfect static hosting on GitHub Pages.
-- **Vite Ready**: Includes Vite tooling for local developer workflow and hot reloading.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML5, CSS3 (Custom Variables, Flexbox, Grid), JavaScript (ES6+), Web Crypto API
-- **Typography**: Google Fonts (Inter, Outfit, JetBrains Mono)
-- **Tooling**: Vite
-- **Deployment**: GitHub Pages
-
----
-
-## 🚀 Local Development
-
-To run the portfolio locally:
-
-```bash
-# Clone the repository
-git clone git@github.com:velan45/velan.github.io.git
-cd velan.github.io
-
-# Install dependencies (optional, for Vite dev server)
-npm install
-
-# Start local development server
-npm run dev
+```
+documents/resumes/        ← résumés (first/primary one powers the hero "Résumé" button)
+documents/certificates/   ← certificates, awards, transcripts
 ```
 
-Open your browser at `http://localhost:5173`.
+Each file gets a card with a preview, an in-page viewer, a download button and an optional "Verify" link. They're also searchable in the command palette. The **Credentials** section hides itself when both folders are empty.
 
----
+Metadata is optional — without it the title is derived from the file name (`aws-cloud-practitioner.pdf` → "Aws Cloud Practitioner"). To customise, add an entry keyed by the exact file name under `documents` in [content/portfolio.json](content/portfolio.json):
 
-## 📬 Contact & Connect
+```json
+"documents": {
+  "resumes": {
+    "velan-resume.pdf": { "title": "Résumé — Software Developer", "primary": true }
+  },
+  "certificates": {
+    "aws-cloud-practitioner.jpg": {
+      "title": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "2025-06",
+      "credentialUrl": "https://www.credly.com/badges/…",
+      "description": "Cloud fundamentals, security and pricing.",
+      "visible": true
+    }
+  }
+}
+```
 
-- **Email**: [velan45@gmail.com](mailto:velan45@gmail.com)
-- **GitHub**: [@velan45](https://github.com/velan45)
-- **LinkedIn**: [Velan D](https://www.linkedin.com/in/velan-d-43486118b/)
+| Field | Effect |
+| --- | --- |
+| `title` | Display name (defaults to file name) |
+| `issuer`, `date` (`YYYY` or `YYYY-MM`) | Shown under the title; newest first |
+| `credentialUrl` | Adds a "Verify credential" link |
+| `primary` | Pins a résumé first and uses it for the hero button |
+| `visible: false` | Hides the file without deleting it |
+
+> ⚠️ Everything in `documents/` is published publicly. Remove personal details (phone, address, ID numbers) you don't want online before committing.
+
+## Local development
+
+Requires [Node.js](https://nodejs.org) 18+.
+
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # outputs dist/
+npm run preview   # serve the production build
+```
+
+## Deployment (one-time setup)
+
+1. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. Push to `main`. The workflow in [.github/workflows/deploy.yml](.github/workflows/deploy.yml) builds and publishes `dist/`.
+
+To host under a project path (e.g. `username.github.io/portfolio/`), set `base: "/portfolio/"` in [vite.config.js](vite.config.js) and update `site.url`.
+
+## Project structure
+
+```
+content/portfolio.json   ← all editable content
+documents/               ← résumés & certificates (auto-discovered)
+public/                  ← static assets (photo, favicon)
+src/App.jsx              ← layout, command palette wiring
+src/components/          ← one component per section
+src/styles.css           ← design tokens & styles
+vite.config.js           ← React plugin + SEO/sitemap generator
+```
