@@ -1,0 +1,257 @@
+{
+  "site": {
+    "url": "https://velan45.github.io",
+    "title": "Velan D | Software Developer & Freelancer",
+    "description": "Velan D - Software Developer & Full-Stack Freelancer. Web applications, AI tooling, low-level Linux networking and high-performance backend systems.",
+    "keywords": ["Velan D", "Software Developer", "Full Stack", "Freelancer", "Python", "JavaScript", "C++", "React", "AI", "Linux Sockets"],
+    "ogImage": "profile.jpg",
+    "brand": "Velan.dev",
+    "brandInitials": "VD"
+  },
+
+  "sections": {
+    "about":        { "visible": true,  "nav": "About",      "eyebrow": "About me",        "title": "Engineering from the UI down to the socket" },
+    "experience":   { "visible": true,  "nav": "Experience", "eyebrow": "Track record",    "title": "Experience" },
+    "credentials":  { "visible": true,  "nav": "Credentials", "eyebrow": "Proof of work",  "title": "Résumé & certifications" },
+    "skills":       { "visible": true,  "nav": "Skills",     "eyebrow": "Toolbox",         "title": "Skills & technologies" },
+    "projects":     { "visible": true,  "nav": "Projects",   "eyebrow": "Selected work",   "title": "Projects that ship" },
+    "services":     { "visible": true,  "nav": "Services",   "eyebrow": "How I can help",  "title": "Services" },
+    "testimonials": { "visible": false, "nav": "Testimonials", "eyebrow": "Kind words",    "title": "What clients say" },
+    "contact":      { "visible": true,  "nav": "Contact",    "eyebrow": "Let's work together", "title": "Have a project in mind?" }
+  },
+
+  "profile": {
+    "name": "Velan D",
+    "role": "Software Developer & Freelancer",
+    "avatar": "profile.jpg",
+    "location": "India · Remote worldwide",
+    "email": "velan45@gmail.com",
+    "available": true,
+    "availabilityText": "Available for freelance & new opportunities",
+    "headlinePrefix": "I build",
+    "headlinePhrases": [
+      "scalable web applications",
+      "intelligent AI tooling",
+      "low-level socket utilities",
+      "high-performance backend APIs",
+      "clean, resilient software"
+    ],
+    "summary": "Software Developer & Full-Stack Freelancer building robust web applications, AI tools, low-level networking utilities and resilient backend systems.",
+    "tags": ["Full Stack", "Python / C++", "AI & Systems"],
+    "socials": [
+      { "label": "GitHub",   "icon": "github",   "url": "https://github.com/velan45" },
+      { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/velan-d-43486118b/" },
+      { "label": "Email",    "icon": "email",    "url": "mailto:velan45@gmail.com" }
+    ],
+    "bio": [
+      "I am a software developer and independent freelancer with an unyielding curiosity for how things work under the hood — from high-level web applications down to low-level Linux socket communications.",
+      "Whether it's building interactive user experiences, architecting AI-powered tools like DreamCatcher and Resume-Matcher, or profiling network round-trip latencies in C++, I craft software that is not only functional, but clean, maintainable and reliable.",
+      "Beyond the editor, I'm a football enthusiast and admirer of Lionel Messi's playmaking — precision, composure under pressure and vision are the standards I bring to my engineering."
+    ]
+  },
+
+  "highlights": [
+    { "title": "End-to-end delivery", "desc": "Concept, UI, backend logic and production deployment — one accountable owner." },
+    { "title": "Low-level & high-level fluency", "desc": "Comfortable across C++ socket programming, Python automation and modern JavaScript/React." },
+    { "title": "Collaborative & agile", "desc": "Works independently as a freelancer and alongside cross-functional teams." }
+  ],
+
+  "stats": [
+    { "value": "6+",   "label": "Open-source projects" },
+    { "value": "3",    "label": "Core languages: JS, Python, C++" },
+    { "value": "100%", "label": "Commitment to clean, tested code" },
+    { "value": "Remote", "label": "Available across timezones" }
+  ],
+
+  "experience": [
+    {
+      "role": "Software Developer & Freelancer",
+      "company": "Independent",
+      "period": "Present",
+      "location": "Remote",
+      "summary": "Designing and delivering web apps, AI tooling and systems utilities for clients and open source.",
+      "achievements": [
+        "Built an LLM-powered resume analyzer that scores candidate/job alignment and generates tailored documents.",
+        "Developed C++ POSIX socket tools measuring RTT and jitter with microsecond precision.",
+        "Shipped automated uptime and latency monitoring for websites and servers."
+      ],
+      "tech": ["React", "JavaScript", "Python", "C++", "Linux"]
+    }
+  ],
+
+  "skills": [
+    {
+      "category": "Frontend",
+      "description": "Fast, accessible, responsive and delightful interfaces.",
+      "items": ["React", "JavaScript (ES6+)", "HTML5 & Semantic Web", "Modern CSS / Grid / Flexbox", "Responsive Design", "Vite", "UI / UX Prototyping"]
+    },
+    {
+      "category": "Backend & Systems",
+      "description": "Dependable logic, networking layers and data flows.",
+      "items": ["Python", "C++ Systems Programming", "Node.js", "Linux Socket Programming", "REST APIs", "TCP/IP & ICMP", "Monitoring"]
+    },
+    {
+      "category": "AI, Tools & DevOps",
+      "description": "Automation workflows, version control and intelligent integrations.",
+      "items": ["LLM & Prompt Pipelines", "Document AI Parsing", "Git & GitHub Actions", "Linux Shell & Bash", "Debugging & Profiling", "GitHub Pages"]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "resume-matcher",
+      "title": "Resume-Matcher & Analyzer",
+      "category": "AI & Tools",
+      "featured": true,
+      "visible": true,
+      "summary": "AI harness that parses resumes, scores them against job descriptions and generates tailored PDF resumes and cover letters with multi-LLM support.",
+      "problem": "Tailoring a resume for each job is slow and hard to measure objectively.",
+      "solution": "A modular Python pipeline that parses documents, scores skill/experience alignment and drives LLMs with reusable prompt templates.",
+      "impact": [
+        "Multi-provider LLM support for local and cloud inference",
+        "Automated alignment scoring for skills and experience",
+        "Parses PDF, DOCX and Markdown resumes"
+      ],
+      "tech": ["Python", "LLM", "NLP", "PDF Generation"],
+      "github": "https://github.com/velan45/Resume-Matcher",
+      "demo": ""
+    },
+    {
+      "id": "dreamcatcher",
+      "title": "DreamCatcher",
+      "category": "Web",
+      "featured": true,
+      "visible": true,
+      "summary": "Interactive web app that captures dreams, performs semantic interpretation and surfaces recurring themes as actionable reflections.",
+      "problem": "Dream journals capture text but provide no insight into patterns.",
+      "solution": "A lightweight frontend with semantic parsing that extracts symbols and themes from each entry.",
+      "impact": [
+        "Dream logging with sentiment indicators",
+        "Semantic extraction of archetypes and metaphors",
+        "Fast, dependency-light UI with dark mode"
+      ],
+      "tech": ["JavaScript", "AI / NLP", "Web APIs", "CSS"],
+      "github": "https://github.com/velan45/DreamCatcher",
+      "demo": ""
+    },
+    {
+      "id": "socket-ping",
+      "title": "Socket Ping",
+      "category": "Systems",
+      "featured": true,
+      "visible": true,
+      "summary": "High-performance Linux network tool in C++ using raw POSIX sockets to measure round-trip time, jitter and transmission health.",
+      "problem": "Standard tools hide the details needed to diagnose latency and jitter precisely.",
+      "solution": "Raw POSIX sockets with microsecond timers and statistical analysis of every probe.",
+      "impact": [
+        "Microsecond-precision RTT measurements",
+        "Robust handling of timeouts and packet loss",
+        "Portable for embedded and server diagnostics"
+      ],
+      "tech": ["C++", "POSIX", "TCP/IP", "ICMP"],
+      "github": "https://github.com/velan45/socket_ping",
+      "demo": ""
+    },
+    {
+      "id": "perf-monitor",
+      "title": "Website & System Monitor",
+      "category": "AI & Tools",
+      "featured": false,
+      "visible": true,
+      "summary": "Python tool tracking response codes, latency and system health for early incident detection.",
+      "problem": "Outages are often noticed by users before the owner.",
+      "solution": "Configurable polling with threshold-based alerts, running as a lightweight background service.",
+      "impact": [
+        "Multi-endpoint tracking with configurable intervals",
+        "Threshold-based latency alerting",
+        "CSV/log export for reliability audits"
+      ],
+      "tech": ["Python", "HTTP", "systemd", "Automation"],
+      "github": "https://github.com/velan45/performance_monitoring",
+      "demo": ""
+    },
+    {
+      "id": "socket-lin",
+      "title": "Linux Socket Library",
+      "category": "Systems",
+      "featured": false,
+      "visible": true,
+      "summary": "Documented Linux socket implementations for client-server communication and multi-client connection management.",
+      "problem": "Socket programming references are often fragmented or outdated.",
+      "solution": "Clean encapsulation of the socket lifecycle with non-blocking and multiplexing examples.",
+      "impact": [
+        "Clear create/bind/listen/accept abstractions",
+        "Non-blocking I/O and multiplexing",
+        "Reference-quality documentation"
+      ],
+      "tech": ["C++", "Linux", "TCP/IP"],
+      "github": "https://github.com/velan45/socket_lin",
+      "demo": ""
+    },
+    {
+      "id": "portfolio",
+      "title": "This Portfolio",
+      "category": "Web",
+      "featured": false,
+      "visible": true,
+      "summary": "React + Vite static site driven entirely by a JSON content file, with SEO metadata, command palette and automated GitHub Pages deployment.",
+      "problem": "Updating a portfolio usually means editing markup.",
+      "solution": "All content lives in one JSON file; a commit triggers a CI build and deploy.",
+      "impact": [
+        "Content-driven: no code changes to update",
+        "Build-time SEO, JSON-LD and sitemap",
+        "Keyboard command palette (Ctrl/⌘ + K)"
+      ],
+      "tech": ["React", "Vite", "GitHub Actions", "CSS"],
+      "github": "https://github.com/velan45/velan.github.io",
+      "demo": "https://velan45.github.io"
+    }
+  ],
+
+  "services": [
+    {
+      "title": "Full-stack web development",
+      "desc": "Mobile-first web apps and landing pages with performant frontends and clean server integrations.",
+      "bullets": ["Responsive, accessible UI", "Performance & SEO", "SPAs & dashboards"]
+    },
+    {
+      "title": "Backend & network utilities",
+      "desc": "Robust backend services, socket-based diagnostics, health monitors and system utilities in Python and C++.",
+      "bullets": ["REST APIs & data pipelines", "Low-latency socket programming", "Uptime monitoring & alerts"]
+    },
+    {
+      "title": "AI integration & automation",
+      "desc": "LLM integrations and script automation that remove manual work and add intelligence to workflows.",
+      "bullets": ["LLM integration & analyzers", "Python workflow automation", "Data extraction & generation"]
+    }
+  ],
+
+  "testimonials": [
+    {
+      "quote": "Replace this with a real quote from a client or colleague, then set sections.testimonials.visible to true.",
+      "name": "Client Name",
+      "title": "Role, Company"
+    }
+  ],
+
+  "documents": {
+    "resumes": {
+      "velan-resume.pdf": { "title": "Résumé — Software Developer", "primary": true, "description": "One-page résumé covering full-stack, AI and systems work." }
+    },
+    "certificates": {
+      "example-certificate.pdf": {
+        "title": "Certificate Name",
+        "issuer": "Issuing Organization",
+        "date": "2026-01",
+        "credentialUrl": "",
+        "description": "Optional one-line description.",
+        "visible": true
+      }
+    }
+  },
+
+  "contact": {
+    "text": "I'm currently taking on freelance projects and open to full-time roles. Tell me about your idea and let's build it.",
+    "formEndpoint": ""
+  }
+}
