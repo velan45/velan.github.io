@@ -43,7 +43,7 @@ documents/resumes/        ← résumés (first/primary one powers the hero "Rés
 documents/certificates/   ← certificates, awards, transcripts
 ```
 
-Each file gets a card with a preview, an in-page viewer, a download button and an optional "Verify" link. They're also searchable in the command palette. The **Credentials** section hides itself when both folders are empty.
+Each file gets a card with a preview, an in-page viewer, a download button and an optional "Verify" link. They're also searchable in the command palette. The **Résumé** and **Certificates** sections each get their own nav link and hide themselves when their folder is empty.
 
 Metadata is optional — without it the title is derived from the file name (`aws-cloud-practitioner.pdf` → "Aws Cloud Practitioner"). To customise, add an entry keyed by the exact file name under `documents` in [content/portfolio.json](content/portfolio.json):
 

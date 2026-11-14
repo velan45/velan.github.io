@@ -5,16 +5,17 @@
     "description": "Velan D - Software Developer & Full-Stack Freelancer. Web applications, AI tooling, low-level Linux networking and high-performance backend systems.",
     "keywords": ["Velan D", "Software Developer", "Full Stack", "Freelancer", "Python", "JavaScript", "C++", "React", "AI", "Linux Sockets"],
     "ogImage": "profile.jpg",
-    "brand": "Velan.dev",
+    "brand": "Velan.D",
     "brandInitials": "VD"
   },
 
   "sections": {
     "about":        { "visible": true,  "nav": "About",      "eyebrow": "About me",        "title": "Engineering from the UI down to the socket" },
     "experience":   { "visible": true,  "nav": "Experience", "eyebrow": "Track record",    "title": "Experience" },
-    "credentials":  { "visible": true,  "nav": "Credentials", "eyebrow": "Proof of work",  "title": "Résumé & certifications" },
+    "resume":       { "visible": true,  "nav": "Résumé",     "eyebrow": "Curriculum vitae", "title": "My résumé" },
+    "certificates": { "visible": true,  "nav": "Certificates", "eyebrow": "Proof of learning", "title": "Certifications" },
     "skills":       { "visible": true,  "nav": "Skills",     "eyebrow": "Toolbox",         "title": "Skills & technologies" },
-    "projects":     { "visible": true,  "nav": "Projects",   "eyebrow": "Selected work",   "title": "Projects that ship" },
+    "projects":     { "visible": false,  "nav": "Projects",   "eyebrow": "Selected work",   "title": "Projects that ship" },
     "services":     { "visible": true,  "nav": "Services",   "eyebrow": "How I can help",  "title": "Services" },
     "testimonials": { "visible": false, "nav": "Testimonials", "eyebrow": "Kind words",    "title": "What clients say" },
     "contact":      { "visible": true,  "nav": "Contact",    "eyebrow": "Let's work together", "title": "Have a project in mind?" }
@@ -24,46 +25,104 @@
     "name": "Velan D",
     "role": "Software Developer & Freelancer",
     "avatar": "profile.jpg",
-    "location": "India · Remote worldwide",
+    "location": "India · UAE · Saudi Arabia · Qatar · Remote worldwide",
     "email": "velan45@gmail.com",
     "available": true,
-    "availabilityText": "Available for freelance & new opportunities",
+    "availabilityText": "Available for new opportunities",
     "headlinePrefix": "I build",
     "headlinePhrases": [
       "scalable web applications",
       "intelligent AI tooling",
-      "low-level socket utilities",
       "high-performance backend APIs",
       "clean, resilient software"
     ],
-    "summary": "Software Developer & Full-Stack Freelancer building robust web applications, AI tools, low-level networking utilities and resilient backend systems.",
-    "tags": ["Full Stack", "Python / C++", "AI & Systems"],
+    "summary": "Software Developer building robust web applications, AI tools, resilient backend systems.",
+    "tags": ["Backend", "Python / C++", "AI & Systems"],
     "socials": [
       { "label": "GitHub",   "icon": "github",   "url": "https://github.com/velan45" },
       { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/velan-d-43486118b/" },
       { "label": "Email",    "icon": "email",    "url": "mailto:velan45@gmail.com" }
     ],
     "bio": [
-      "I am a software developer and independent freelancer with an unyielding curiosity for how things work under the hood — from high-level web applications down to low-level Linux socket communications.",
-      "Whether it's building interactive user experiences, architecting AI-powered tools like DreamCatcher and Resume-Matcher, or profiling network round-trip latencies in C++, I craft software that is not only functional, but clean, maintainable and reliable.",
-      "Beyond the editor, I'm a football enthusiast and admirer of Lionel Messi's playmaking — precision, composure under pressure and vision are the standards I bring to my engineering."
+      "I'm a Senior Software Engineer at Amadeus with 10+ years of experience across backend engineering, AI engineering and high-performance systems. I build and maintain mission-critical airline reservation and departure control systems — writing performance-sensitive C++, designing scalable Node.js and Express.js services backed by PostgreSQL, and delivering features such as PII audit trails and data modeling.",
+      "On the AI side, I design and ship LLM-powered applications: agentic workflows orchestrated with LangChain and LangGraph, Retrieval-Augmented Generation (RAG) pipelines over embeddings and vector search, and Model Context Protocol (MCP) servers that connect AI agents securely to real tools, APIs and data. I focus on making these systems production-ready — grounded, observable, testable and cost-aware.",
+      "I ship software end to end — REST APIs and microservices in Node.js and Python, containerized with Docker, orchestrated on Kubernetes, automated through GitHub Actions CI/CD and deployed on Azure. An early grounding in safety-critical engineering still shapes how I work: with rigor, reliability and a close eye on performance. Alongside my full-time role, I take on freelance and open-source work in AI tooling, backend systems and web applications."
     ]
   },
 
   "highlights": [
-    { "title": "End-to-end delivery", "desc": "Concept, UI, backend logic and production deployment — one accountable owner." },
-    { "title": "Low-level & high-level fluency", "desc": "Comfortable across C++ socket programming, Python automation and modern JavaScript/React." },
-    { "title": "Collaborative & agile", "desc": "Works independently as a freelancer and alongside cross-functional teams." }
+    { "title": "Mission-critical backends", "desc": "Airline reservation and departure control systems at Amadeus, built with C++, Node.js, Express.js and PostgreSQL." },
+    { "title": "AI engineering", "desc": "Agentic workflows with LangChain and LangGraph, RAG pipelines and MCP servers connecting LLMs to real tools and data." },
+    { "title": "Cloud-native delivery", "desc": "Docker, Kubernetes, GitHub Actions CI/CD and Azure migrations — from commit to production." }
   ],
 
   "stats": [
-    { "value": "6+",   "label": "Open-source projects" },
-    { "value": "3",    "label": "Core languages: JS, Python, C++" },
-    { "value": "100%", "label": "Commitment to clean, tested code" },
-    { "value": "Remote", "label": "Available across timezones" }
+    { "value": "10+", "label": "Years of engineering experience" },
+    { "value": "4",   "label": "Engineering roles across industry & research" },
+    { "value": "6",   "label": "Open-source projects" },
+    { "value": "5",   "label": "Core languages: C++, Python, C, JS, SQL" }
   ],
 
   "experience": [
+    {
+      "role": "Senior Software Engineer",
+      "company": "Amadeus",
+      "period": "06/2023 – Present",
+      "location": "Bangalore, India",
+      "summary": "Backend and AI engineering on airline reservation and departure control systems for ticket management and boarding.",
+      "achievements": [
+        "Developed and maintained reservation and departure control systems for ticket management and boarding activities.",
+        "Built features to reserve a configurable percentage of seats for specific customers.",
+        "Created an audit trail for PII (Personally Identifiable Information) data, including data modeling.",
+        "Built scalable backend services with Node.js and Express.js, backed by SQL databases.",
+        "Containerized applications with Docker and orchestrated deployments on Kubernetes.",
+        "Automated build, test and deployment pipelines with GitHub Actions for CI/CD.",
+        "Migrated applications to Azure, improving scalability and performance.",
+        "Contributed to green IT initiatives by optimizing memory usage and runtime efficiency.",
+        "Designed Python testing frameworks, including Robot Framework, and analyzed data with PostgreSQL.",
+        "Took part in system design and delivered user stories on schedule within an agile team."
+      ],
+      "tech": ["C++", "Node.js", "Express.js", "PostgreSQL", "Docker", "Kubernetes", "GitHub Actions", "Azure", "Python", "Robot Framework"]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Gridraster Pvt. Ltd.",
+      "period": "04/2020 – 05/2023",
+      "location": "",
+      "summary": "Real-time communication and mixed-reality software on Windows and HoloLens 2.",
+      "achievements": [
+        "Integrated the log4cxx stack to aggregate logs effectively.",
+        "Implemented a message exchange server in Node.js.",
+        "Migrated the application from WebRTC m71 and m62 to m84.",
+        "Created clients for Win32 server and client applications and integrated authentication features.",
+        "Rendered content for HoloLens 2 to enhance the user experience."
+      ],
+      "tech": ["C++", "WebRTC", "Node.js", "Win32", "log4cxx", "HoloLens 2"]
+    },
+    {
+      "role": "Engineer",
+      "company": "Comavia System Technologies Pvt. Ltd.",
+      "period": "02/2019 – 03/2020",
+      "location": "Bangalore, India",
+      "summary": "Avionics integration and testing of safety-critical embedded systems.",
+      "achievements": [
+        "Developed Python scripts for diagnostics of an avionics integration rig.",
+        "Performed hardware-software integration testing on safety-critical embedded systems per DO-178B standards."
+      ],
+      "tech": ["Python", "Embedded Systems", "DO-178B"]
+    },
+    {
+      "role": "Project Associate",
+      "company": "Centre for Aerospace Research, MIT, Anna University",
+      "period": "06/2016 – 02/2019",
+      "location": "Chennai, India",
+      "summary": "UAV research on target localization and sensor fusion.",
+      "achievements": [
+        "Developed a prototype vehicle capable of target localization in C, using a gimbal-mounted video camera.",
+        "Derived a state estimation algorithm for UAV sensor fusion in Python."
+      ],
+      "tech": ["C", "Python", "Sensor Fusion", "UAV"]
+    },
     {
       "role": "Software Developer & Freelancer",
       "company": "Independent",
@@ -81,19 +140,24 @@
 
   "skills": [
     {
-      "category": "Frontend",
-      "description": "Fast, accessible, responsive and delightful interfaces.",
-      "items": ["React", "JavaScript (ES6+)", "HTML5 & Semantic Web", "Modern CSS / Grid / Flexbox", "Responsive Design", "Vite", "UI / UX Prototyping"]
+      "category": "Languages",
+      "description": "High-performance systems code and productive scripting.",
+      "items": ["C++", "C", "Python", "JavaScript", "SQL"]
     },
     {
-      "category": "Backend & Systems",
-      "description": "Dependable logic, networking layers and data flows.",
-      "items": ["Python", "C++ Systems Programming", "Node.js", "Linux Socket Programming", "REST APIs", "TCP/IP & ICMP", "Monitoring"]
+      "category": "Backend & Data",
+      "description": "Scalable services, real-time communication and data modeling.",
+      "items": ["Node.js", "Express.js", "TypeScript", "REST APIs", "PostgreSQL", "WebRTC", "System Design"]
     },
     {
-      "category": "AI, Tools & DevOps",
-      "description": "Automation workflows, version control and intelligent integrations.",
-      "items": ["LLM & Prompt Pipelines", "Document AI Parsing", "Git & GitHub Actions", "Linux Shell & Bash", "Debugging & Profiling", "GitHub Pages"]
+      "category": "Cloud & DevOps",
+      "description": "Containerized, automated and observable delivery.",
+      "items": ["Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Azure", "Git", "log4cxx"]
+    },
+    {
+      "category": "Testing, AI & Practices",
+      "description": "Quality, intelligent tooling and team delivery.",
+      "items": ["Robot Framework", "Python Test Automation", "LLM & Prompt Pipelines", "React", "Agile / Scrum", "Performance Optimization"]
     }
   ],
 
@@ -210,19 +274,19 @@
 
   "services": [
     {
-      "title": "Full-stack web development",
-      "desc": "Mobile-first web apps and landing pages with performant frontends and clean server integrations.",
-      "bullets": ["Responsive, accessible UI", "Performance & SEO", "SPAs & dashboards"]
+      "title": "AI engineering & agentic systems",
+      "desc": "Production-ready LLM applications — agentic workflows, retrieval-augmented generation and MCP integrations that connect AI to real tools and data.",
+      "bullets": ["Agents with LangChain & LangGraph", "RAG pipelines & vector search", "MCP servers & tool integrations"]
     },
     {
-      "title": "Backend & network utilities",
-      "desc": "Robust backend services, socket-based diagnostics, health monitors and system utilities in Python and C++.",
-      "bullets": ["REST APIs & data pipelines", "Low-latency socket programming", "Uptime monitoring & alerts"]
+      "title": "Backend & API development",
+      "desc": "Scalable, secure backend services in Node.js, Express.js, Python and high-performance C++, backed by well-modeled SQL databases.",
+      "bullets": ["REST APIs & microservices", "PostgreSQL data modeling & audit trails", "Performance & memory optimization"]
     },
     {
-      "title": "AI integration & automation",
-      "desc": "LLM integrations and script automation that remove manual work and add intelligence to workflows.",
-      "bullets": ["LLM integration & analyzers", "Python workflow automation", "Data extraction & generation"]
+      "title": "Cloud, DevOps & quality",
+      "desc": "Containerized, automated delivery from commit to production, with test frameworks that keep releases reliable.",
+      "bullets": ["Docker & Kubernetes deployments", "GitHub Actions CI/CD & Azure migration", "Python & Robot Framework test automation"]
     }
   ],
 
@@ -236,17 +300,11 @@
 
   "documents": {
     "resumes": {
-      "velan-resume.pdf": { "title": "Résumé — Software Developer", "primary": true, "description": "One-page résumé covering full-stack, AI and systems work." }
+      "velan_d_resume_10_26.pdf": { "title": "Résumé — Senior Software Engineer", "primary": true, "description": "Backend, AI and systems engineering experience at Amadeus, Gridraster and more." }
     },
     "certificates": {
-      "example-certificate.pdf": {
-        "title": "Certificate Name",
-        "issuer": "Issuing Organization",
-        "date": "2026-01",
-        "credentialUrl": "",
-        "description": "Optional one-line description.",
-        "visible": true
-      }
+      "express.pdf": { "title": "Express.js" },
+      "typecript.pdf": { "title": "TypeScript" }
     }
   },
 
