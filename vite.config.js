@@ -82,7 +82,7 @@ function portfolioSeo() {
 }
 
 export default defineConfig({
-  base: "/",
+  base: "/velan.github.io/",
   plugins: [react(), portfolioSeo()],
   build: {
     // Always emit documents (PDF/images) as real files so they can be viewed and downloaded.
