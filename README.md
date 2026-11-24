@@ -104,3 +104,4 @@ src/components/          ← one component per section
 src/styles.css           ← design tokens & styles
 vite.config.js           ← React plugin + SEO/sitemap generator
 ```
+Modified
